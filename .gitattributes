@@ -1,0 +1,2 @@
+*.sql linguist-detectable=true
+create.sql linguist-language=PLSQL
