@@ -77,3 +77,57 @@ VALUES ('elegantwear', 'elegant123', 'info@elegantwear.com', 'Elegant', 'Wear', 
 
 INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email, supplier_firstname, supplier_lastname, supplier_phone)
 VALUES ('vintagevibes', 'vintagepass', 'contact@vintagevibes.com', 'Vintage', 'Vibes', '678-901-2345');
+
+CREATE TABLE gpnr_product_attribute (
+    product_attribute_id NUMBER(10) PRIMARY KEY,
+    product_attribute_name VARCHAR2(255),
+    value VARCHAR2(255)
+);
+
+-- Colors
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (1, 'Color', 'Red');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (2, 'Color', 'Blue');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (3, 'Color', 'Green');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (4, 'Color', 'Yellow');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (5, 'Color', 'Black');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (6, 'Color', 'White');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (7, 'Color', 'Gray');
+
+-- Sizes
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (8, 'Size', 'Small');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (9, 'Size', 'Medium');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (10, 'Size', 'Large');
+
+-- Materials
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (11, 'Material', 'Cotton');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (12, 'Material', 'Polyester');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (13, 'Material', 'Silk');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (14, 'Material', 'Denim');
+
+INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
+VALUES (15, 'Material', 'Spandex');
