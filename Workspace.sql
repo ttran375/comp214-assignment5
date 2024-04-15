@@ -83,6 +83,24 @@ CREATE TABLE gpnr_customer (
     customer_phone VARCHAR2(15),
     customer_address VARCHAR2(255)
 );
+
+CREATE TABLE gpnr_promotion (
+    promotion_id NUMBER(10) PRIMARY KEY,
+    promotion_name VARCHAR2(255),
+    start_date DATE,
+    end_date DATE,
+    discount NUMBER(5, 2)
+);
+
+CREATE TABLE gpnr_payment_info (
+    payment_info_id NUMBER(10) PRIMARY KEY,
+    card_number NUMBER(19),
+    card_name VARCHAR2(255),
+    card_expiration DATE,
+    card_cvv VARCHAR2(4),
+    CONSTRAINT fk_payment_info_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+);
+
 CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
 
 -- gpnr_supplier
@@ -315,14 +333,7 @@ VALUES ('kevin_lee', 'kevinpass', 'kevin@example.com', 'Kevin', 'Lee', '901-234-
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
 VALUES ('emily_taylor', 'emilypass', 'emily@example.com', 'Emily', 'Taylor', '012-345-6789', '147 Cherry St, Midtown');
 
-CREATE TABLE gpnr_promotion (
-    promotion_id NUMBER(10) PRIMARY KEY,
-    promotion_name VARCHAR2(255),
-    start_date DATE,
-    end_date DATE,
-    discount NUMBER(5, 2)
-);
-
+-- gpnr_promotion
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
 VALUES (1, 'Spring Sale', TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 0.15);
 
@@ -352,3 +363,37 @@ VALUES (9, 'Spring Preview', TO_DATE('2025-02-15', 'YYYY-MM-DD'), TO_DATE('2025-
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
 VALUES (10, 'Early Summer Sale', TO_DATE('2025-05-01', 'YYYY-MM-DD'), TO_DATE('2025-05-31', 'YYYY-MM-DD'), 0.20);
+
+-- gpnr_payment_info
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (1, 1234567890123456, 'John Doe', TO_DATE('2026-12-31', 'YYYY-MM-DD'), '123', 'john_doe');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (2, 2345678901234567, 'Jane Smith', TO_DATE('2027-06-30', 'YYYY-MM-DD'), '234', 'jane_smith');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (3, 3456789012345678, 'Mike Jones', TO_DATE('2025-09-30', 'YYYY-MM-DD'), '345', 'mike_jones');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (4, 4567890123456789, 'Michael Jones', TO_DATE('2028-03-31', 'YYYY-MM-DD'), '456', 'mike_jones');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (5, 5678901234567890, 'Amy Wong', TO_DATE('2024-12-31', 'YYYY-MM-DD'), '567', 'amy_wong');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (6, 6789012345678901, 'Brian Smith', TO_DATE('2026-11-30', 'YYYY-MM-DD'), '678', 'brian_smith');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (7, 7890123456789012, 'Sarah Brown', TO_DATE('2025-10-31', 'YYYY-MM-DD'), '789', 'sarah_brown');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (8, 8901234567890123, 'David Kim', TO_DATE('2027-08-31', 'YYYY-MM-DD'), '890', 'david_kim');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (9, 9012345678901234, 'Lisa Miller', TO_DATE('2024-09-30', 'YYYY-MM-DD'), '901', 'lisa_miller');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (10, 1234567890123456, 'Kevin Lee', TO_DATE('2028-07-31', 'YYYY-MM-DD'), '012', 'kevin_lee');
+
+INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
+VALUES (11, 2345678901234567, 'Emily Taylor', TO_DATE('2025-04-30', 'YYYY-MM-DD'), '123', 'emily_taylor');
