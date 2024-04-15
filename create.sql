@@ -44,7 +44,6 @@ CREATE TABLE gpnr_product (
     product_name VARCHAR2(255),
     product_description CLOB,
     price NUMBER(12, 2),
-    weight NUMBER(4, 2),
     product_quantity NUMBER(10),
     category_id NUMBER(10),
     product_attribute_id NUMBER(10),
