@@ -74,6 +74,14 @@ CREATE TABLE gpnr_product (
     CONSTRAINT fk_product_attribute FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
 
+CREATE TABLE gpnr_supplier_product (
+    supplier_username VARCHAR2(20),
+    product_id NUMBER(10),
+    PRIMARY KEY (supplier_username, product_id),
+    CONSTRAINT fk_supplier_product_supplier FOREIGN KEY (supplier_username) REFERENCES gpnr_supplier(supplier_username),
+    CONSTRAINT fk_supplier_product_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
+
 CREATE TABLE gpnr_customer (
     customer_username VARCHAR2(20) PRIMARY KEY,
     customer_password VARCHAR2(255),
@@ -98,6 +106,7 @@ CREATE TABLE gpnr_payment_info (
     card_name VARCHAR2(255),
     card_expiration DATE,
     card_cvv VARCHAR2(4),
+    customer_username VARCHAR2(20),
     CONSTRAINT fk_payment_info_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
@@ -321,6 +330,47 @@ VALUES (seq_gpnr_product_id.NEXTVAL, 'Medium Blue Belt', 'Stylish medium blue be
 INSERT INTO gpnr_product (product_id, product_name, product_description, price, product_quantity, category_id, product_attribute_id) 
 VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Hat', 'Fashionable large green hat for sun protection', 19.99, 100, 10, 3);
 
+-- gpnr_supplier_product
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 1);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 6);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 17);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 3);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 12);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 25);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 2);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 7);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 20);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 5);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 13);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 26);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 4);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 11);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 24);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 10);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 16);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 29);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 8);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 14);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 27);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 9);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 15);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 28);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 16);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 22);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 30);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 10);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 18);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 23);
+
 -- gpnr_customer
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
 VALUES ('john_doe', 'password123', 'john@example.com', 'John', 'Doe', '123-456-7890', '123 Main St, Cityville');
@@ -417,7 +467,6 @@ VALUES (10, 1234567890123456, 'Kevin Lee', TO_DATE('2028-07-31', 'YYYY-MM-DD'), 
 INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
 VALUES (11, 2345678901234567, 'Emily Taylor', TO_DATE('2025-04-30', 'YYYY-MM-DD'), '123', 'emily_taylor');
 
--- gpnr_request
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
 VALUES (101, SYSTIMESTAMP, 'Pending', 0, 'Please process this order as soon as possible.', 'john_doe');
 
@@ -427,21 +476,20 @@ VALUES (102, SYSTIMESTAMP, 'Pending', 0, 'I need these items urgently.', 'jane_s
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
 VALUES (103, SYSTIMESTAMP, 'Pending', 0, 'Can you expedite the delivery?', 'mike_jones');
 
--- gpnr_product_request
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (1, 1, 2);
+VALUES (1, 101, 2);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (5, 1, 1);
+VALUES (5, 101, 1);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (1, 2, 1);
+VALUES (1, 102, 1);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (12, 2, 3);
+VALUES (12, 102, 3);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (3, 3, 2);
+VALUES (3, 103, 2);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (14, 3, 2);
+VALUES (14, 103, 2);
