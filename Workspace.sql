@@ -74,8 +74,6 @@ CREATE TABLE gpnr_product (
     CONSTRAINT fk_product_attribute FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
 
-
-
 CREATE TABLE gpnr_customer (
     customer_username VARCHAR2(20) PRIMARY KEY,
     customer_password VARCHAR2(255),
