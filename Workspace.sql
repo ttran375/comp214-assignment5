@@ -101,6 +101,25 @@ CREATE TABLE gpnr_payment_info (
     CONSTRAINT fk_payment_info_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
+CREATE TABLE gpnr_request (
+    request_id NUMBER(10) PRIMARY KEY,
+    request_created_at TIMESTAMP,
+    request_status VARCHAR2(255),
+    request_cost NUMBER(12, 2),
+    message CLOB,
+    customer_username VARCHAR2(20),
+    CONSTRAINT fk_request_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+);
+
+CREATE TABLE gpnr_product_request (
+    product_id NUMBER(10),
+    request_id NUMBER(10),
+    product_request_quantity NUMBER(10),
+    PRIMARY KEY (product_id, request_id),
+    CONSTRAINT fk_product_request_request FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
+    CONSTRAINT fk_product_request_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
+
 CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
 
 -- gpnr_supplier
@@ -397,3 +416,32 @@ VALUES (10, 1234567890123456, 'Kevin Lee', TO_DATE('2028-07-31', 'YYYY-MM-DD'), 
 
 INSERT INTO gpnr_payment_info (payment_info_id, card_number, card_name, card_expiration, card_cvv, customer_username)
 VALUES (11, 2345678901234567, 'Emily Taylor', TO_DATE('2025-04-30', 'YYYY-MM-DD'), '123', 'emily_taylor');
+
+-- gpnr_request
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
+VALUES (101, SYSTIMESTAMP, 'Pending', 0, 'Please process this order as soon as possible.', 'john_doe');
+
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
+VALUES (102, SYSTIMESTAMP, 'Pending', 0, 'I need these items urgently.', 'jane_smith');
+
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
+VALUES (103, SYSTIMESTAMP, 'Pending', 0, 'Can you expedite the delivery?', 'mike_jones');
+
+-- gpnr_product_request
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (1, 1, 2);
+
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (5, 1, 1);
+
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (1, 2, 1);
+
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (12, 2, 3);
+
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (3, 3, 2);
+
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
+VALUES (14, 3, 2);
