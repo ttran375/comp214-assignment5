@@ -93,6 +93,7 @@ CREATE TABLE gpnr_shipping (
     shipping_id NUMBER(10) PRIMARY KEY,
     shipping_date TIMESTAMP,
     shipping_address VARCHAR2(255),
+    shipping_state VARCHAR2(255),
     shipping_status VARCHAR2(255),
     shipping_cost NUMBER(12, 2),
     shipping_rating NUMBER(5, 2),
