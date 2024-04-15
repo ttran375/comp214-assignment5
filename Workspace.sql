@@ -270,3 +270,43 @@ VALUES (seq_gpnr_product_id.NEXTVAL, 'Medium Blue Belt', 'Stylish medium blue be
 
 INSERT INTO gpnr_product (product_id, product_name, product_description, price, product_quantity, category_id, product_attribute_id) 
 VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Hat', 'Fashionable large green hat for sun protection', 19.99, 100, 10, 3);
+
+CREATE TABLE gpnr_customer (
+    customer_username VARCHAR2(20) PRIMARY KEY,
+    customer_password VARCHAR2(255),
+    customer_email VARCHAR2(255),
+    customer_firstname VARCHAR2(255),
+    customer_lastname VARCHAR2(255),
+    customer_phone VARCHAR2(15),
+    customer_address VARCHAR2(255)
+);
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('john_doe', 'password123', 'john@example.com', 'John', 'Doe', '123-456-7890', '123 Main St, Cityville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('jane_smith', 'p@ssw0rd', 'jane@example.com', 'Jane', 'Smith', '234-567-8901', '456 Elm St, Townsville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('mike_jones', 'securepass', 'mike@example.com', 'Mike', 'Jones', '345-678-9012', '789 Oak St, Villageton');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('amy_wong', 'password123', 'amy@example.com', 'Amy', 'Wong', '456-789-0123', '101 Pine St, Hamletville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('brian_smith', 'brianspassword', 'brian@example.com', 'Brian', 'Smith', '567-890-1234', '246 Maple St, Suburbia');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('sarah_brown', 'sarahpass', 'sarah@example.com', 'Sarah', 'Brown', '678-901-2345', '369 Cedar St, Countryside');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('david_kim', 'david123', 'david@example.com', 'David', 'Kim', '789-012-3456', '753 Walnut St, Metropolis');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('lisa_miller', 'lisapassword', 'lisa@example.com', 'Lisa', 'Miller', '890-123-4567', '852 Birch St, Downtown');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('kevin_lee', 'kevinpass', 'kevin@example.com', 'Kevin', 'Lee', '901-234-5678', '963 Sycamore St, Uptown');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('emily_taylor', 'emilypass', 'emily@example.com', 'Emily', 'Taylor', '012-345-6789', '147 Cherry St, Midtown');
