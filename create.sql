@@ -137,3 +137,12 @@ CREATE TABLE gpnr_product_cart (
     CONSTRAINT fk_product_cart_cart FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
     CONSTRAINT fk_product_cart_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
+
+CREATE SEQUENCE seq_gpnr_category_id START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_product_attribute_id START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_payment_info_id START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_promotion_id START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_request_id START WITH 100 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_cart_id START WITH 100 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_shipping_id START WITH 100 INCREMENT BY 1;
