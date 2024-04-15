@@ -83,7 +83,7 @@ CREATE TABLE gpnr_product_attribute (
     product_attribute_name VARCHAR2(255),
     value VARCHAR2(255)
 );
-
+// gpnr_product_attribute
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (1, 'Color', 'Red');
 
@@ -310,3 +310,41 @@ VALUES ('kevin_lee', 'kevinpass', 'kevin@example.com', 'Kevin', 'Lee', '901-234-
 
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
 VALUES ('emily_taylor', 'emilypass', 'emily@example.com', 'Emily', 'Taylor', '012-345-6789', '147 Cherry St, Midtown');
+
+CREATE TABLE gpnr_promotion (
+    promotion_id NUMBER(10) PRIMARY KEY,
+    promotion_name VARCHAR2(255),
+    start_date DATE,
+    end_date DATE,
+    discount NUMBER(5, 2)
+);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (1, 'Spring Sale', TO_DATE('2024-03-01', 'YYYY-MM-DD'), TO_DATE('2024-03-31', 'YYYY-MM-DD'), 0.15);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (2, 'Summer Clearance', TO_DATE('2024-06-01', 'YYYY-MM-DD'), TO_DATE('2024-06-30', 'YYYY-MM-DD'), 0.25);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (3, 'Back to School', TO_DATE('2024-08-01', 'YYYY-MM-DD'), TO_DATE('2024-09-15', 'YYYY-MM-DD'), 0.20);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (4, 'Fall Fashion', TO_DATE('2024-09-15', 'YYYY-MM-DD'), TO_DATE('2024-10-31', 'YYYY-MM-DD'), 0.10);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (5, 'Winter Warm-Up', TO_DATE('2024-11-01', 'YYYY-MM-DD'), TO_DATE('2024-12-31', 'YYYY-MM-DD'), 0.30);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (6, 'Holiday Sale', TO_DATE('2024-12-01', 'YYYY-MM-DD'), TO_DATE('2024-12-25', 'YYYY-MM-DD'), 0.25);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (7, 'New Year Clearance', TO_DATE('2024-12-26', 'YYYY-MM-DD'), TO_DATE('2025-01-15', 'YYYY-MM-DD'), 0.40);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (8, 'Valentine''s Day Special', TO_DATE('2025-02-01', 'YYYY-MM-DD'), TO_DATE('2025-02-14', 'YYYY-MM-DD'), 0.15);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (9, 'Spring Preview', TO_DATE('2025-02-15', 'YYYY-MM-DD'), TO_DATE('2025-02-28', 'YYYY-MM-DD'), 0.10);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, discount)
+VALUES (10, 'Early Summer Sale', TO_DATE('2025-05-01', 'YYYY-MM-DD'), TO_DATE('2025-05-31', 'YYYY-MM-DD'), 0.20);
