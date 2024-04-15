@@ -493,3 +493,54 @@ VALUES (3, 103, 2);
 
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
 VALUES (14, 103, 2);
+
+CREATE TABLE gpnr_customer_promotion (
+    customer_username VARCHAR2(20),
+    promotion_id NUMBER(10),
+    PRIMARY KEY (customer_username, promotion_id),
+    CONSTRAINT fk_cust_prom_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username),
+    CONSTRAINT fk_cust_prom_promotion FOREIGN KEY (promotion_id) REFERENCES gpnr_promotion(promotion_id)
+);
+
+CREATE TABLE gpnr_cart (
+    cart_id NUMBER(10) PRIMARY KEY,
+    cart_created_at TIMESTAMP,
+    cart_status VARCHAR2(255),
+    cart_discount NUMBER(5, 2),
+    total NUMBER(12, 2),
+    shipping_id NUMBER(10),
+    customer_username VARCHAR2(20),
+    CONSTRAINT fk_cart_shipping FOREIGN KEY (shipping_id) REFERENCES gpnr_shipping(shipping_id),
+    CONSTRAINT fk_cart_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+);
+
+CREATE TABLE gpnr_product_cart (
+    product_id NUMBER(10),
+    cart_id NUMBER(10),
+    product_cart_quantity NUMBER(10),
+    PRIMARY KEY (product_id, cart_id),
+    CONSTRAINT fk_product_cart_cart FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
+    CONSTRAINT fk_product_cart_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
+
+CREATE TABLE gpnr_shipping (
+    shipping_id NUMBER(10) PRIMARY KEY,
+    shipping_date TIMESTAMP,
+    shipping_address VARCHAR2(255),
+    shipping_state VARCHAR2(255),
+    shipping_status VARCHAR2(255),
+    shipping_cost NUMBER(12, 2),
+    shipping_rating NUMBER(5, 2),
+    shipper_username VARCHAR2(20),
+    CONSTRAINT fk_shipping_shipper FOREIGN KEY (shipper_username) REFERENCES gpnr_shipper(shipper_username)
+);
+
+CREATE TABLE gpnr_shipper (
+    shipper_username VARCHAR2(20) PRIMARY KEY,
+    shipper_password VARCHAR2(255),
+    shipper_email VARCHAR2(255),
+    shipper_firstname VARCHAR2(255),
+    shipper_lastname VARCHAR2(255),
+    shipper_phone VARCHAR2(15),
+    shipper_rating NUMBER(5, 2)
+);
