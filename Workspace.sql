@@ -64,7 +64,7 @@ INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email,
 VALUES ('stylishthreads', 'stylish123', 'hello@stylishthreads.com', 'Stylish', 'Threads', '234-567-8901');
 
 INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email, supplier_firstname, supplier_lastname, supplier_phone)
-VALUES ('modernchic', 'chicpass', 'support@modernchic.com', 'Modern', 'Chic', '567-890-1234');
+VALUES ('sportychics', 'chicpass', 'support@sportychics.com', 'Sporty', 'Chics', '567-890-1234');
 
 INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email, supplier_firstname, supplier_lastname, supplier_phone)
 VALUES ('trendyboutique', 'trendypass', 'info@trendyboutique.com', 'Trendy', 'Boutique', '890-123-4567');
@@ -84,7 +84,6 @@ CREATE TABLE gpnr_product_attribute (
     value VARCHAR2(255)
 );
 
--- Colors
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (1, 'Color', 'Red');
 
@@ -106,7 +105,6 @@ VALUES (6, 'Color', 'White');
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (7, 'Color', 'Gray');
 
--- Sizes
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (8, 'Size', 'Small');
 
@@ -116,7 +114,6 @@ VALUES (9, 'Size', 'Medium');
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (10, 'Size', 'Large');
 
--- Materials
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (11, 'Material', 'Cotton');
 
