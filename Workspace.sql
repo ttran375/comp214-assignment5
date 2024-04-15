@@ -128,3 +128,41 @@ VALUES (14, 'Material', 'Denim');
 
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (15, 'Material', 'Spandex');
+
+CREATE TABLE gpnr_category (
+    category_id NUMBER(10) PRIMARY KEY,
+    category_name VARCHAR2(255),
+    category_description CLOB,
+    parent_category_id NUMBER(10),
+    CONSTRAINT fk_category_parent_category FOREIGN KEY (parent_category_id) REFERENCES gpnr_category(category_id)
+);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (1, 'Tops', 'Collection of upper clothing items', NULL);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (2, 'Bottoms', 'Collection of lower clothing items', NULL);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (3, 'Shirts', 'Variety of shirts for men and women', 1);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (4, 'Pants', 'Different styles and types of pants', 2);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (5, 'Dresses', 'Assorted styles and lengths of dresses', 1);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (6, 'Skirts', 'Various skirt designs for women', 2);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (7, 'Trousers', 'Different styles of trousers for men and women', 2);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (8, 'Outerwear', 'Jackets, coats, and other outer clothing items', NULL);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (9, 'Activewear', 'Sportswear and athletic clothing', NULL);
+
+INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
+VALUES (10, 'Accessories', 'Various fashion accessories such as belts, scarves, and hats', NULL);
