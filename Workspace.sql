@@ -48,6 +48,46 @@ CREATE TABLE gpnr_supplier (
     supplier_phone VARCHAR2(15)
 );
 
+CREATE TABLE gpnr_product_attribute (
+    product_attribute_id NUMBER(10) PRIMARY KEY,
+    product_attribute_name VARCHAR2(255),
+    value VARCHAR2(255)
+);
+
+CREATE TABLE gpnr_category (
+    category_id NUMBER(10) PRIMARY KEY,
+    category_name VARCHAR2(255),
+    category_description CLOB,
+    parent_category_id NUMBER(10),
+    CONSTRAINT fk_category_parent_category FOREIGN KEY (parent_category_id) REFERENCES gpnr_category(category_id)
+);
+
+CREATE TABLE gpnr_product (
+    product_id NUMBER(10) PRIMARY KEY,
+    product_name VARCHAR2(255),
+    product_description CLOB,
+    price NUMBER(12, 2),
+    product_quantity NUMBER(10),
+    category_id NUMBER(10),
+    product_attribute_id NUMBER(10),
+    CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
+    CONSTRAINT fk_product_attribute FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
+);
+
+
+
+CREATE TABLE gpnr_customer (
+    customer_username VARCHAR2(20) PRIMARY KEY,
+    customer_password VARCHAR2(255),
+    customer_email VARCHAR2(255),
+    customer_firstname VARCHAR2(255),
+    customer_lastname VARCHAR2(255),
+    customer_phone VARCHAR2(15),
+    customer_address VARCHAR2(255)
+);
+CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
+
+-- gpnr_supplier
 INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email, supplier_firstname, supplier_lastname, supplier_phone)
 VALUES ('johndoe', 'password123', 'johndoe@example.com', 'John', 'Doe', '123-456-7890');
 
@@ -78,12 +118,7 @@ VALUES ('elegantwear', 'elegant123', 'info@elegantwear.com', 'Elegant', 'Wear', 
 INSERT INTO gpnr_supplier (supplier_username, supplier_password, supplier_email, supplier_firstname, supplier_lastname, supplier_phone)
 VALUES ('vintagevibes', 'vintagepass', 'contact@vintagevibes.com', 'Vintage', 'Vibes', '678-901-2345');
 
-CREATE TABLE gpnr_product_attribute (
-    product_attribute_id NUMBER(10) PRIMARY KEY,
-    product_attribute_name VARCHAR2(255),
-    value VARCHAR2(255)
-);
-// gpnr_product_attribute
+-- gpnr_product_attribute
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (1, 'Color', 'Red');
 
@@ -129,14 +164,7 @@ VALUES (14, 'Material', 'Denim');
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (15, 'Material', 'Spandex');
 
-CREATE TABLE gpnr_category (
-    category_id NUMBER(10) PRIMARY KEY,
-    category_name VARCHAR2(255),
-    category_description CLOB,
-    parent_category_id NUMBER(10),
-    CONSTRAINT fk_category_parent_category FOREIGN KEY (parent_category_id) REFERENCES gpnr_category(category_id)
-);
-
+-- gpnr_category
 INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
 VALUES (1, 'Tops', 'Collection of upper clothing items', NULL);
 
@@ -167,20 +195,7 @@ VALUES (9, 'Activewear', 'Sportswear and athletic clothing', NULL);
 INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
 VALUES (10, 'Accessories', 'Various fashion accessories such as belts, scarves, and hats', NULL);
 
-CREATE TABLE gpnr_product (
-    product_id NUMBER(10) PRIMARY KEY,
-    product_name VARCHAR2(255),
-    product_description CLOB,
-    price NUMBER(12, 2),
-    product_quantity NUMBER(10),
-    category_id NUMBER(10),
-    product_attribute_id NUMBER(10),
-    CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
-    CONSTRAINT fk_product_attribute FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
-);
-
-CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
-
+-- gpnr_product
 INSERT INTO gpnr_product (product_id, product_name, product_description, price, product_quantity, category_id, product_attribute_id) 
 VALUES (seq_gpnr_product_id.NEXTVAL, 'Red Cotton T-Shirt', 'Comfortable red cotton t-shirt for everyday wear', 19.99, 100, 3, 1);
 
@@ -271,16 +286,7 @@ VALUES (seq_gpnr_product_id.NEXTVAL, 'Medium Blue Belt', 'Stylish medium blue be
 INSERT INTO gpnr_product (product_id, product_name, product_description, price, product_quantity, category_id, product_attribute_id) 
 VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Hat', 'Fashionable large green hat for sun protection', 19.99, 100, 10, 3);
 
-CREATE TABLE gpnr_customer (
-    customer_username VARCHAR2(20) PRIMARY KEY,
-    customer_password VARCHAR2(255),
-    customer_email VARCHAR2(255),
-    customer_firstname VARCHAR2(255),
-    customer_lastname VARCHAR2(255),
-    customer_phone VARCHAR2(15),
-    customer_address VARCHAR2(255)
-);
-
+-- gpnr_customer
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
 VALUES ('john_doe', 'password123', 'john@example.com', 'John', 'Doe', '123-456-7890', '123 Main St, Cityville');
 
