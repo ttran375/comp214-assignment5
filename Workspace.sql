@@ -325,16 +325,16 @@ CREATE TABLE gpnr_product_request (
 -- CREATE SEQUENCE seq_gpnr_request_id START WITH 101 INCREMENT BY 1;
 
 -- gpnr_request
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-10-05 08:45:00', 'Approved', 0.1, 'Request approved. Processing will begin shortly.', 'brian_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-11-25 11:30:00', 'Pending', 0.15, 'Please expedite processing for this request.', 'sarah_brown');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-12-10 14:15:00', 'Approved', 0.2, 'Request approved. Payment has been processed.', 'david_kim');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (101, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (102, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (103, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (104, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (105, TIMESTAMP '2023-10-05 08:45:00', 'Approved', 0.1, 'Request approved. Processing will begin shortly.', 'brian_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (106, TIMESTAMP '2023-11-25 11:30:00', 'Pending', 0.15, 'Please expedite processing for this request.', 'sarah_brown');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (107, TIMESTAMP '2023-12-10 14:15:00', 'Approved', 0.2, 'Request approved. Payment has been processed.', 'david_kim');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (108, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (109, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (110, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
 
 -- gpnr_product_request
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (7, 101, 5);
@@ -355,8 +355,6 @@ INSERT INTO gpnr_product_request (product_id, request_id, product_request_quanti
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (2, 109, 7);
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (23, 110, 2);
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (13, 110, 3);
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (15, 111, 4);
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (9, 111, 5);
 
 CREATE TABLE gpnr_promotion (
     promotion_id NUMBER(10) PRIMARY KEY,
@@ -397,7 +395,7 @@ INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, 
 VALUES (10, 'Easter Special', TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-20', 'YYYY-MM-DD'), 0.2);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
-VALUES (11, 'Mother's Day Sale', TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-10', 'YYYY-MM-DD'), 0.25);
+VALUES (11, 'Mother''s Day Sale', TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-10', 'YYYY-MM-DD'), 0.25);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
 VALUES (12, 'Memorial Day Weekend', TO_DATE('2024-05-25', 'YYYY-MM-DD'), TO_DATE('2024-05-28', 'YYYY-MM-DD'), 0.2);
