@@ -180,39 +180,37 @@ CREATE TABLE gpnr_product (
     FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
 
-CREATE SEQUENCE seq_gpnr_product_id START WITH 1 INCREMENT BY 1;
-
 -- gpnr_product
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Red T-Shirt', 19.99, 100, 1, 1);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Navy Blue Jeans', 29.99, 75, 1, 14);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Green Dress', 39.99, 50, 5, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Yellow Hoodie', 34.99, 80, 6, 1);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Black Leggings', 24.99, 90, 1, 15);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'White Sneakers', 49.99, 60, 2, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Gray Sweatpants', 29.99, 70, 6, 15);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Small Red Backpack', 39.99, 40, 3, 1);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Navy Blue Socks', 7.29, 30, 9, 3);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Scarf', 19.99, 50, 3, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Black Swimsuit', 29.99, 45, 8, 15);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'White Sunglasses', 14.99, 100, 3, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Gray Hat', 9.99, 120, 3, 7);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Small Black Gym Bag', 24.99, 80, 4, 5);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Medium Navy Blue Yoga Mat', 29.99, 60, 4, 2);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Water Bottle', 19.99, 70, 4, 4);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Red Soccer Jersey', 39.99, 40, 4, 1);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Navy Blue Basketball Shorts', 24.99, 50, 4, 14);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Green Running Shoes', 59.99, 30, 4, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Yellow Tennis Skirt', 34.99, 35, 4, 15);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Black Baseball Cap', 19.99, 80, 3, 5);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'White Leather Belt', 29.99, 60, 3, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Gray Wool Gloves', 14.99, 100, 3, 7);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Small Red Handbag', 39.99, 40, 3, 1);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Medium Navy Blue Necktie', 24.99, 50, 5, 14);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Large Green Suit', 59.99, 30, 5, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Black Dress Shoes', 49.99, 35, 2, 5);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'White Lace Gloves', 19.99, 70, 5, 6);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Gray Bow Tie', 14.99, 100, 5, 7);
-INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (seq_gpnr_product_id.NEXTVAL, 'Small Red Suspenders', 24.99, 80, 5, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (1, 'Red T-Shirt', 19.99, 100, 1, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (2, 'Navy Blue Jeans', 29.99, 75, 1, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (3, 'Green Dress', 39.99, 50, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (4, 'Yellow Hoodie', 34.99, 80, 6, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (5, 'Black Leggings', 24.99, 90, 1, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (6, 'White Sneakers', 49.99, 60, 2, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (7, 'Gray Sweatpants', 29.99, 70, 6, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (8, 'Small Red Backpack', 39.99, 40, 3, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (9, 'Large Navy Blue Socks', 7.29, 30, 9, 3);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (10, 'Large Green Scarf', 19.99, 50, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (11, 'Black Swimsuit', 29.99, 45, 8, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (12, 'White Sunglasses', 14.99, 100, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (13, 'Gray Hat', 9.99, 120, 3, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (14, 'Small Black Gym Bag', 24.99, 80, 4, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (15, 'Medium Navy Blue Yoga Mat', 29.99, 60, 4, 2);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (16, 'Large Green Water Bottle', 19.99, 70, 4, 4);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (17, 'Red Soccer Jersey', 39.99, 40, 4, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (18, 'Navy Blue Basketball Shorts', 24.99, 50, 4, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (19, 'Green Running Shoes', 59.99, 30, 4, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (20, 'Yellow Tennis Skirt', 34.99, 35, 4, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (21, 'Black Baseball Cap', 19.99, 80, 3, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (22, 'White Leather Belt', 29.99, 60, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (23, 'Gray Wool Gloves', 14.99, 100, 3, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (24, 'Small Red Handbag', 39.99, 40, 3, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (25, 'Medium Navy Blue Necktie', 24.99, 50, 5, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (26, 'Large Green Suit', 59.99, 30, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (27, 'Black Dress Shoes', 49.99, 35, 2, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (28, 'White Lace Gloves', 19.99, 70, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (29, 'Gray Bow Tie', 14.99, 100, 5, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (30, 'Small Red Suspenders', 24.99, 80, 5, 1);
 
 CREATE TABLE gpnr_supplier_product (
     supplier_username VARCHAR2(20),
@@ -315,27 +313,29 @@ CREATE TABLE gpnr_request (
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
+CREATE SEQUENCE seq_gpnr_product_id START WITH 100 INCREMENT BY 1;
+
 -- gpnr_request
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (1, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (2, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (3, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (4, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (5, TIMESTAMP '2023-10-05 08:45:00', 'Approved', 0.1, 'Request approved. Processing will begin shortly.', 'brian_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (6, TIMESTAMP '2023-11-25 11:30:00', 'Pending', 0.15, 'Please expedite processing for this request.', 'sarah_brown');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (7, TIMESTAMP '2023-12-10 14:15:00', 'Approved', 0.2, 'Request approved. Payment has been processed.', 'david_kim');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (8, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (9, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (10, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (11, TIMESTAMP '2024-04-10 10:10:00', 'Approved', 0.1, 'Request approved. Processing underway.', 'jane_doe');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (12, TIMESTAMP '2024-04-20 13:20:00', 'Pending', 0.15, 'Request is urgent. Please expedite.', 'john_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (13, TIMESTAMP '2024-05-05 17:55:00', 'Rejected', 0.2, 'Request rejected due to policy violation.', 'mike_jones');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (14, TIMESTAMP '2024-06-10 08:30:00', 'Approved', 0.25, 'Request approved. Processing will start soon.', 'amy_wong');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (15, TIMESTAMP '2024-07-15 11:15:00', 'Pending', 0.3, 'Request needs immediate attention. Urgent.', 'brian_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (16, TIMESTAMP '2024-08-20 14:00:00', 'Approved', 0.05, 'Request approved. Processing initiated.', 'sarah_brown');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (17, TIMESTAMP '2024-09-10 06:30:00', 'Pending', 0.1, 'Please prioritize this request. Urgent.', 'david_kim');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (18, TIMESTAMP '2024-10-05 09:45:00', 'Rejected', 0.15, 'Request rejected due to invalid details.', 'lisa_miller');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (19, TIMESTAMP '2024-11-20 14:20:00', 'Pending', 0.2, 'Request needs immediate processing.', 'kevin_lee');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (20, TIMESTAMP '2024-12-10 17:00:00', 'Approved', 0.25, 'Request approved. Processing in progress.', 'emily_taylor');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-10-05 08:45:00', 'Approved', 0.1, 'Request approved. Processing will begin shortly.', 'brian_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-11-25 11:30:00', 'Pending', 0.15, 'Please expedite processing for this request.', 'sarah_brown');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-12-10 14:15:00', 'Approved', 0.2, 'Request approved. Payment has been processed.', 'david_kim');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-04-10 10:10:00', 'Approved', 0.1, 'Request approved. Processing underway.', 'jane_doe');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-04-20 13:20:00', 'Pending', 0.15, 'Request is urgent. Please expedite.', 'john_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-05-05 17:55:00', 'Rejected', 0.2, 'Request rejected due to policy violation.', 'mike_jones');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-06-10 08:30:00', 'Approved', 0.25, 'Request approved. Processing will start soon.', 'amy_wong');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-07-15 11:15:00', 'Pending', 0.3, 'Request needs immediate attention. Urgent.', 'brian_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-08-20 14:00:00', 'Approved', 0.05, 'Request approved. Processing initiated.', 'sarah_brown');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-09-10 06:30:00', 'Pending', 0.1, 'Please prioritize this request. Urgent.', 'david_kim');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-10-05 09:45:00', 'Rejected', 0.15, 'Request rejected due to invalid details.', 'lisa_miller');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-11-20 14:20:00', 'Pending', 0.2, 'Request needs immediate processing.', 'kevin_lee');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2024-12-10 17:00:00', 'Approved', 0.25, 'Request approved. Processing in progress.', 'emily_taylor');
 
 CREATE TABLE gpnr_product_request (
     product_id NUMBER(10),
