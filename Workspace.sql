@@ -409,6 +409,15 @@ CREATE TABLE gpnr_cart (
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
+CREATE TABLE gpnr_cart_product (
+    cart_id NUMBER(10),
+    product_id NUMBER(10),
+    cart_product_quantity NUMBER(10),
+    PRIMARY KEY (cart_id, product_id),
+    FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
+
 -- gpnr_cart
 INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (1001, TIMESTAMP '2023-05-10 08:00:00', 'active', 'jane_doe');
 INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (1002, TIMESTAMP '2023-06-15 08:15:00', 'active', 'john_smith');
@@ -425,14 +434,66 @@ INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username)
 INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (1013, TIMESTAMP '2024-04-10 11:00:00', 'active', 'mike_jones');
 INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (1014, TIMESTAMP '2024-04-15 11:15:00', 'active', 'amy_wong');
 
-CREATE TABLE gpnr_cart_product (
-    cart_id NUMBER(10),
-    product_id NUMBER(10),
-    cart_product_quantity NUMBER(10),
-    PRIMARY KEY (cart_id, product_id),
-    FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
-    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
-);
+-- gpnr_cart_product
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1001, 1, 3);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1001, 5, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1001, 8, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1002, 3, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1002, 7, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1002, 11, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1002, 19, 3);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1003, 2, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1003, 10, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1003, 14, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1003, 16, 3);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1004, 6, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1004, 12, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1005, 4, 3);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1005, 20, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1005, 23, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1006, 15, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1006, 21, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1006, 22, 3);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1007, 13, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1007, 18, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1007, 25, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1007, 27, 2);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1008, 24, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1008, 26, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1008, 28, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1008, 29, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1009, 9, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1009, 17, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1009, 30, 3);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1010, 2, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1010, 7, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1010, 13, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1010, 20, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1011, 3, 3);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1011, 11, 2);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1012, 5, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1012, 16, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1012, 23, 3);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1013, 4, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1013, 9, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1013, 18, 2);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1013, 24, 1);
+
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1014, 6, 3);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1014, 12, 1);
+INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1014, 21, 2);
 
 CREATE TABLE gpnr_payment_method (
     payment_method_id NUMBER(10) PRIMARY KEY,
