@@ -47,6 +47,7 @@ CREATE TABLE gpnr_shipper (
     shipper_phone VARCHAR2(15)
 );
 
+-- gpnr_shipper
 INSERT INTO gpnr_shipper (shipper_username, shipper_email, shipper_firstname, shipper_lastname, shipper_phone) VALUES ('justin_doe', 'justin.doe@example.com', 'Justin', 'Doe', '1234567890');
 INSERT INTO gpnr_shipper (shipper_username, shipper_email, shipper_firstname, shipper_lastname, shipper_phone) VALUES ('walter_smith', 'walter.smith@example.com', 'Walter', 'Smith', '1987654321');
 INSERT INTO gpnr_shipper (shipper_username, shipper_email, shipper_firstname, shipper_lastname, shipper_phone) VALUES ('mike_jones', 'mike.jones@example.com', 'Mike', 'Jones', '1122334455');
@@ -156,6 +157,7 @@ CREATE TABLE gpnr_category (
     category_description CLOB
 );
 
+-- gpnr_category
 INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (1, 'Clothing', 'A wide range of fashionable clothing items for all occasions.');
 INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (2, 'Footwear', 'Stylish and comfortable footwear for men, women, and children.');
 INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (3, 'Accessories', 'Trendy accessories to complement your outfits and add flair to your look.');
@@ -270,6 +272,7 @@ CREATE TABLE gpnr_district (
     shipping_cost NUMBER(3, 2)
 );
 
+-- gpnr_district
 INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (1, 'Toronto Central', 0.15, 0.10);
 INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (2, 'North York', 0.12, 0.05);
 INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (3, 'Scarborough', 0.18, 0.08);
@@ -311,6 +314,28 @@ CREATE TABLE gpnr_request (
     customer_username VARCHAR2(20),
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
+
+-- gpnr_request
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (1, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (2, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (3, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (4, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (5, TIMESTAMP '2023-10-05 08:45:00', 'Approved', 0.1, 'Request approved. Processing will begin shortly.', 'brian_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (6, TIMESTAMP '2023-11-25 11:30:00', 'Pending', 0.15, 'Please expedite processing for this request.', 'sarah_brown');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (7, TIMESTAMP '2023-12-10 14:15:00', 'Approved', 0.2, 'Request approved. Payment has been processed.', 'david_kim');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (8, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (9, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (10, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (11, TIMESTAMP '2024-04-10 10:10:00', 'Approved', 0.1, 'Request approved. Processing underway.', 'jane_doe');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (12, TIMESTAMP '2024-04-20 13:20:00', 'Pending', 0.15, 'Request is urgent. Please expedite.', 'john_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (13, TIMESTAMP '2024-05-05 17:55:00', 'Rejected', 0.2, 'Request rejected due to policy violation.', 'mike_jones');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (14, TIMESTAMP '2024-06-10 08:30:00', 'Approved', 0.25, 'Request approved. Processing will start soon.', 'amy_wong');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (15, TIMESTAMP '2024-07-15 11:15:00', 'Pending', 0.3, 'Request needs immediate attention. Urgent.', 'brian_smith');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (16, TIMESTAMP '2024-08-20 14:00:00', 'Approved', 0.05, 'Request approved. Processing initiated.', 'sarah_brown');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (17, TIMESTAMP '2024-09-10 06:30:00', 'Pending', 0.1, 'Please prioritize this request. Urgent.', 'david_kim');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (18, TIMESTAMP '2024-10-05 09:45:00', 'Rejected', 0.15, 'Request rejected due to invalid details.', 'lisa_miller');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (19, TIMESTAMP '2024-11-20 14:20:00', 'Pending', 0.2, 'Request needs immediate processing.', 'kevin_lee');
+INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (20, TIMESTAMP '2024-12-10 17:00:00', 'Approved', 0.25, 'Request approved. Processing in progress.', 'emily_taylor');
 
 CREATE TABLE gpnr_product_request (
     product_id NUMBER(10),
