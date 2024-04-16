@@ -313,6 +313,15 @@ CREATE TABLE gpnr_request (
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
+CREATE TABLE gpnr_product_request (
+    product_id NUMBER(10),
+    request_id NUMBER(10),
+    product_request_quantity NUMBER(10),
+    PRIMARY KEY (product_id, request_id),
+    FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
+
 CREATE SEQUENCE seq_gpnr_request_id START WITH 101 INCREMENT BY 1;
 
 -- gpnr_request
@@ -326,25 +335,8 @@ INSERT INTO gpnr_request (request_id, request_created_at, request_status, reques
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-01-05 09:00:00', 'Pending', 0.25, 'Request is urgent. Please prioritize processing.', 'lisa_miller');
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-02-15 13:30:00', 'Rejected', 0.3, 'Request rejected due to incomplete information.', 'kevin_lee');
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-03-20 17:45:00', 'Pending', 0.05, 'Please process this request at the earliest convenience.', 'emily_taylor');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-04-10 10:10:00', 'Approved', 0.1, 'Request approved. Processing underway.', 'jane_doe');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-04-20 13:20:00', 'Pending', 0.15, 'Request is urgent. Please expedite.', 'john_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-05-05 17:55:00', 'Rejected', 0.2, 'Request rejected due to policy violation.', 'mike_jones');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-06-10 08:30:00', 'Approved', 0.25, 'Request approved. Processing will start soon.', 'amy_wong');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-07-15 11:15:00', 'Pending', 0.3, 'Request needs immediate attention. Urgent.', 'brian_smith');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-08-20 14:00:00', 'Approved', 0.05, 'Request approved. Processing initiated.', 'sarah_brown');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-09-10 06:30:00', 'Pending', 0.1, 'Please prioritize this request. Urgent.', 'david_kim');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-10-05 09:45:00', 'Rejected', 0.15, 'Request rejected due to invalid details.', 'lisa_miller');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-11-20 14:20:00', 'Pending', 0.2, 'Request needs immediate processing.', 'kevin_lee');
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2024-12-10 17:00:00', 'Approved', 0.25, 'Request approved. Processing in progress.', 'emily_taylor');
 
-CREATE TABLE gpnr_product_request (
-    product_id NUMBER(10),
-    request_id NUMBER(10),
-    product_request_quantity NUMBER(10),
-    PRIMARY KEY (product_id, request_id),
-    FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
-    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
-);
+
 
 CREATE TABLE gpnr_promotion (
     promotion_id NUMBER(10) PRIMARY KEY,
