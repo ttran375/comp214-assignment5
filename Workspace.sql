@@ -326,6 +326,31 @@ CREATE SEQUENCE seq_gpnr_request_id START WITH 101 INCREMENT BY 1;
 
 -- gpnr_request
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
+
+-- gpnr_product_request
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (3, 101, 5);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (8, 101, 3);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (14, 102, 2);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (6, 102, 4);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (20, 103, 7);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (9, 104, 6);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (12, 105, 2);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (17, 105, 3);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (5, 106, 4);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (18, 106, 5);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (21, 107, 3);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (11, 107, 4);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (4, 108, 6);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (19, 108, 3);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (10, 109, 5);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (2, 109, 7);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (23, 110, 2);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (13, 110, 3);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (15, 111, 4);
+INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity) VALUES (16, 111, 5);
+
+
+
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-07-05 11:30:00', 'Approved', 0.2, 'Urgent request. Need immediate attention.', 'john_smith');
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-08-20 13:45:00', 'Pending', 0.3, 'This is a test message for the request.', 'mike_jones');
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_request_id.NEXTVAL, TIMESTAMP '2023-09-10 15:20:00', 'Rejected', 0.05, 'Request has been rejected due to insufficient funds.', 'amy_wong');
