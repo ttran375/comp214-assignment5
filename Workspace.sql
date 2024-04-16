@@ -156,33 +156,15 @@ CREATE TABLE gpnr_category (
     category_description CLOB
 );
 
--- gpnr_category
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (1, 'Tops', 'Collection of upper clothing items', NULL);
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (1, 'Clothing', 'A wide range of fashionable clothing items for all occasions.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (2, 'Footwear', 'Stylish and comfortable footwear for men, women, and children.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (3, 'Accessories', 'Trendy accessories to complement your outfits and add flair to your look.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (4, 'Sportswear', 'High-quality sportswear designed for performance and style.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (5, 'Formal Wear', 'Elegant attire suitable for formal events and special occasions.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (6, 'Casual Wear', 'Comfortable and chic clothing for everyday wear.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (7, 'Vintage Fashion', 'Unique and timeless fashion pieces inspired by the past decades.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (8, 'Swimwear', 'Fashionable swimwear for lounging by the pool or hitting the beach in style.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (9, 'Outerwear', 'Stylish outerwear options to keep you warm and fashionable in any weather.');
+INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (10, 'Loungewear', 'Comfortable and trendy loungewear perfect for relaxing at home or running errands.');
 
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (2, 'Bottoms', 'Collection of lower clothing items', NULL);
 
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (3, 'Shirts', 'Variety of shirts for men and women', 1);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (4, 'Pants', 'Different styles and types of pants', 2);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (5, 'Dresses', 'Assorted styles and lengths of dresses', 1);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (6, 'Skirts', 'Various skirt designs for women', 2);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (7, 'Trousers', 'Different styles of trousers for men and women', 2);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (8, 'Outerwear', 'Jackets, coats, and other outer clothing items', NULL);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (9, 'Activewear', 'Sportswear and athletic clothing', NULL);
-
-INSERT INTO gpnr_category (category_id, category_name, category_description, parent_category_id)
-VALUES (10, 'Accessories', 'Various fashion accessories such as belts, scarves, and hats', NULL);
