@@ -36,7 +36,7 @@ CREATE TABLE gpnr_category (
     category_name VARCHAR2(255),
     category_description CLOB,
     parent_category_id NUMBER(10),
-    CONSTRAINT fk_category_parent_category FOREIGN KEY (parent_category_id) REFERENCES gpnr_category(category_id)
+    FOREIGN KEY (parent_category_id) REFERENCES gpnr_category(category_id)
 );
 
 CREATE TABLE gpnr_product (
@@ -47,16 +47,16 @@ CREATE TABLE gpnr_product (
     product_quantity NUMBER(10),
     category_id NUMBER(10),
     product_attribute_id NUMBER(10),
-    CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
-    CONSTRAINT fk_product_attribute FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
+    FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
+    FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
 
 CREATE TABLE gpnr_supplier_product (
     supplier_username VARCHAR2(20),
     product_id NUMBER(10),
     PRIMARY KEY (supplier_username, product_id),
-    CONSTRAINT fk_supplier_product_supplier FOREIGN KEY (supplier_username) REFERENCES gpnr_supplier(supplier_username),
-    CONSTRAINT fk_supplier_product_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+    FOREIGN KEY (supplier_username) REFERENCES gpnr_supplier(supplier_username),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
 
 CREATE TABLE gpnr_customer (
@@ -75,7 +75,7 @@ CREATE TABLE gpnr_payment_info (
     card_name VARCHAR2(255),
     card_expiration DATE,
     card_cvv VARCHAR2(4),
-    CONSTRAINT fk_payment_info_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+    FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
 CREATE TABLE gpnr_request (
@@ -85,7 +85,7 @@ CREATE TABLE gpnr_request (
     request_cost NUMBER(12, 2),
     message CLOB,
     customer_username VARCHAR2(20),
-    CONSTRAINT fk_request_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+    FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
 CREATE TABLE gpnr_shipping (
@@ -97,7 +97,7 @@ CREATE TABLE gpnr_shipping (
     shipping_cost NUMBER(12, 2),
     shipping_rating NUMBER(5, 2),
     shipper_username VARCHAR2(20),
-    CONSTRAINT fk_shipping_shipper FOREIGN KEY (shipper_username) REFERENCES gpnr_shipper(shipper_username)
+    FOREIGN KEY (shipper_username) REFERENCES gpnr_shipper(shipper_username)
 );
 
 CREATE TABLE gpnr_cart (
@@ -108,16 +108,16 @@ CREATE TABLE gpnr_cart (
     total NUMBER(12, 2),
     shipping_id NUMBER(10),
     customer_username VARCHAR2(20),
-    CONSTRAINT fk_cart_shipping FOREIGN KEY (shipping_id) REFERENCES gpnr_shipping(shipping_id),
-    CONSTRAINT fk_cart_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+    FOREIGN KEY (shipping_id) REFERENCES gpnr_shipping(shipping_id),
+    FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
 CREATE TABLE gpnr_customer_promotion (
     customer_username VARCHAR2(20),
     promotion_id NUMBER(10),
     PRIMARY KEY (customer_username, promotion_id),
-    CONSTRAINT fk_cust_prom_customer FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username),
-    CONSTRAINT fk_cust_prom_promotion FOREIGN KEY (promotion_id) REFERENCES gpnr_promotion(promotion_id)
+    FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username),
+    FOREIGN KEY (promotion_id) REFERENCES gpnr_promotion(promotion_id)
 );
 
 CREATE TABLE gpnr_product_request (
@@ -125,8 +125,8 @@ CREATE TABLE gpnr_product_request (
     request_id NUMBER(10),
     product_request_quantity NUMBER(10),
     PRIMARY KEY (product_id, request_id),
-    CONSTRAINT fk_product_request_request FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
-    CONSTRAINT fk_product_request_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+    FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
 
 CREATE TABLE gpnr_product_cart (
@@ -134,6 +134,6 @@ CREATE TABLE gpnr_product_cart (
     cart_id NUMBER(10),
     product_cart_quantity NUMBER(10),
     PRIMARY KEY (product_id, cart_id),
-    CONSTRAINT fk_product_cart_cart FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
-    CONSTRAINT fk_product_cart_product FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+    FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
