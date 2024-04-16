@@ -291,35 +291,16 @@ CREATE TABLE gpnr_customer (
 );
 
 -- gpnr_customer
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('john_doe', 'password123', 'john@example.com', 'John', 'Doe', '123-456-7890', '123 Main St, Cityville');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('jane_smith', 'p@ssw0rd', 'jane@example.com', 'Jane', 'Smith', '234-567-8901', '456 Elm St, Townsville');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('mike_jones', 'securepass', 'mike@example.com', 'Mike', 'Jones', '345-678-9012', '789 Oak St, Villageton');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('amy_wong', 'password123', 'amy@example.com', 'Amy', 'Wong', '456-789-0123', '101 Pine St, Hamletville');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('brian_smith', 'brianspassword', 'brian@example.com', 'Brian', 'Smith', '567-890-1234', '246 Maple St, Suburbia');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('sarah_brown', 'sarahpass', 'sarah@example.com', 'Sarah', 'Brown', '678-901-2345', '369 Cedar St, Countryside');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('david_kim', 'david123', 'david@example.com', 'David', 'Kim', '789-012-3456', '753 Walnut St, Metropolis');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('lisa_miller', 'lisapassword', 'lisa@example.com', 'Lisa', 'Miller', '890-123-4567', '852 Birch St, Downtown');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('kevin_lee', 'kevinpass', 'kevin@example.com', 'Kevin', 'Lee', '901-234-5678', '963 Sycamore St, Uptown');
-
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
-VALUES ('emily_taylor', 'emilypass', 'emily@example.com', 'Emily', 'Taylor', '012-345-6789', '147 Cherry St, Midtown');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('jane_doe', 'password1231', 'jane_doe@example.com', 'John', 'Doe', '1234567890', '123 Main St, Toronto Central');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('john_smith', 'p@ssw0rd2', 'john_smith@example.com', 'Jane', 'Smith', '2345678901', '456 Elm St, North York');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('mike_jones', 'securepass3', 'mike_jones@example.com', 'Mike', 'Johnson', '3456789012', '789 Maple Ave, York');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('amy_wong', 'password1234', 'amy_wong@example.com', 'Emily', 'Brown', '4567890123', '987 Oak St, Etobicoke');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('brian_smith', 'brianspassword5', 'brian_smith@example.com', 'Chris', 'Lee', '5678901234', '654 Pine St, East York');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('sarah_brown', 'sarahpass6', 'sarah_brown@example.com', 'Sarah', 'Taylor', '6789012345', '321 Cedar St, Scarborough');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('david_kim', 'david1237', 'david_kim@example.com', 'David', 'Clark', '7890123456', '987 Walnut St, Mississauga');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('lisa_miller', 'lisapassword8', 'lisa_miller@example.com', 'Amanda', 'Martinez', '8901234567', '654 Birch St, Toronto West');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('kevin_lee', 'kevinpass9', 'kevin_lee@example.com', 'Michael', 'Garcia', '9012345678', '321 Spruce St, North York');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('emily_taylor', 'emilypass', 'emily_taylor@example.com', 'Jessica', 'Lopez', '0123456789', '789 Oak St, East York');
 
 CREATE TABLE gpnr_request (
     request_id NUMBER(10) PRIMARY KEY,
