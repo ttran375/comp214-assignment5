@@ -220,62 +220,94 @@ CREATE TABLE gpnr_supplier_product (
 
 -- gpnr_supplier_product
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 1);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 2);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 3);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 4);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 5);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 6);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 7);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 8);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 9);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 10);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 11);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 6);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 17);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 3);
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 12);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 13);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 14);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 15);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 25);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 2);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 7);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 20);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 5);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 13);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 26);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 4);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 11);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 24);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 10);
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 16);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 17);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 18);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 19);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 20);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 21);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 22);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 23);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 24);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 25);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 26);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 29);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 8);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 14);
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 27);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 9);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 15);
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 28);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 29);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 30);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 1);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 2);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 3);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 4);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 5);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 6);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 7);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 8);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 9);
+
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 16);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 22);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 30);
+
 INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 10);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 11);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 12);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 13);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 14);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 15);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 16);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 17);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 18);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 19);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 20);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('johndoe', 21);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('janedoe', 22);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('smithclothing', 23);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('fashiontrends', 24);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('stylishthreads', 25);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('sportychics', 26);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('trendyboutique', 27);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('casualstyles', 28);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('elegantwear', 29);
-INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 30);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 18);
+INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vintagevibes', 23);
+
+---------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE gpnr_customer (
+    customer_username VARCHAR2(20) PRIMARY KEY,
+    customer_password VARCHAR2(255),
+    customer_email VARCHAR2(255),
+    customer_firstname VARCHAR2(255),
+    customer_lastname VARCHAR2(255),
+    customer_phone VARCHAR2(15),
+    customer_address VARCHAR2(255)
+);
+
+-- gpnr_customer
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('john_doe', 'password123', 'john@example.com', 'John', 'Doe', '123-456-7890', '123 Main St, Cityville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('jane_smith', 'p@ssw0rd', 'jane@example.com', 'Jane', 'Smith', '234-567-8901', '456 Elm St, Townsville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('mike_jones', 'securepass', 'mike@example.com', 'Mike', 'Jones', '345-678-9012', '789 Oak St, Villageton');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('amy_wong', 'password123', 'amy@example.com', 'Amy', 'Wong', '456-789-0123', '101 Pine St, Hamletville');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('brian_smith', 'brianspassword', 'brian@example.com', 'Brian', 'Smith', '567-890-1234', '246 Maple St, Suburbia');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('sarah_brown', 'sarahpass', 'sarah@example.com', 'Sarah', 'Brown', '678-901-2345', '369 Cedar St, Countryside');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('david_kim', 'david123', 'david@example.com', 'David', 'Kim', '789-012-3456', '753 Walnut St, Metropolis');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('lisa_miller', 'lisapassword', 'lisa@example.com', 'Lisa', 'Miller', '890-123-4567', '852 Birch St, Downtown');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('kevin_lee', 'kevinpass', 'kevin@example.com', 'Kevin', 'Lee', '901-234-5678', '963 Sycamore St, Uptown');
+
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) 
+VALUES ('emily_taylor', 'emilypass', 'emily@example.com', 'Emily', 'Taylor', '012-345-6789', '147 Cherry St, Midtown');
+
+CREATE TABLE gpnr_request (
+    request_id NUMBER(10) PRIMARY KEY,
+    request_created_at TIMESTAMP,
+    request_status VARCHAR2(255),
+    request_cost NUMBER(3, 2),
+    message CLOB,
+    customer_username VARCHAR2(20),
+    FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
+);
