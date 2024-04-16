@@ -109,7 +109,7 @@ INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name
 VALUES (1, 'Color', 'Red');
 
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
-VALUES (2, 'Color', 'Blue');
+VALUES (2, 'Color', 'Navy Blue');
 
 INSERT INTO gpnr_product_attribute (product_attribute_id, product_attribute_name, value)
 VALUES (3, 'Color', 'Green');
@@ -177,3 +177,35 @@ CREATE TABLE gpnr_product (
     FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
     FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
+
+-- gpnr_product
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (1, 'Red T-Shirt', 19.99, 100, 1, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (2, 'Blue Jeans', 29.99, 75, 1, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (3, 'Green Dress', 39.99, 50, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (4, 'Yellow Hoodie', 34.99, 80, 6, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (5, 'Black Leggings', 24.99, 90, 1, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (6, 'White Sneakers', 49.99, 60, 2, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (7, 'Gray Sweatpants', 29.99, 70, 6, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (8, 'Small Red Backpack', 39.99, 40, 3, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (9, 'Large NavyBlue Jacket', 59.99, 30, 9, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (10, 'Large Green Scarf', 19.99, 50, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (11, 'Black Swimsuit', 29.99, 45, 8, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (12, 'White Sunglasses', 14.99, 100, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (13, 'Gray Hat', 9.99, 120, 3, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (14, 'Small Black Gym Bag', 24.99, 80, 4, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (15, 'Medium Blue Yoga Mat', 29.99, 60, 4, 2);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (16, 'Large Green Water Bottle', 19.99, 70, 4, 4);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (17, 'Red Soccer Jersey', 39.99, 40, 4, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (18, 'Blue Basketball Shorts', 24.99, 50, 4, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (19, 'Green Running Shoes', 59.99, 30, 4, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (20, 'Yellow Tennis Skirt', 34.99, 35, 4, 15);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (21, 'Black Baseball Cap', 19.99, 80, 3, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (22, 'White Leather Belt', 29.99, 60, 3, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (23, 'Gray Wool Gloves', 14.99, 100, 3, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (24, 'Small Red Handbag', 39.99, 40, 3, 1);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (25, 'Medium Blue Necktie', 24.99, 50, 5, 14);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (26, 'Large Green Suit', 59.99, 30, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (27, 'Black Dress Shoes', 49.99, 35, 2, 5);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (28, 'White Lace Gloves', 19.99, 70, 5, 6);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (29, 'Gray Bow Tie', 14.99, 100, 5, 7);
+INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (30, 'Small Red Suspenders', 24.99, 80, 5, 1);
