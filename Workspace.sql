@@ -265,7 +265,7 @@ INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vinta
 
 CREATE TABLE gpnr_district (
     district_id NUMBER(10) PRIMARY KEY,
-    district NUMBER(10),
+    district VARCHAR2(20),
     tax NUMBER(3, 2),
     shipping_cost NUMBER(3, 2)
 );
@@ -299,7 +299,7 @@ INSERT INTO gpnr_customer (customer_username, customer_password, customer_email,
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('sarah_brown', 'sarahpass6', 'sarah_brown@example.com', 'Sarah', 'Taylor', '6789012345', '321 Cedar St, Scarborough');
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('david_kim', 'david1237', 'david_kim@example.com', 'David', 'Clark', '7890123456', '987 Walnut St, Mississauga');
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('lisa_miller', 'lisapassword8', 'lisa_miller@example.com', 'Amanda', 'Martinez', '8901234567', '654 Birch St, Toronto West');
-INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('kevin_lee', 'kevinpass9', 'kevin_lee@example.com', 'Michael', 'Garcia', '9012345678', '321 Spruce St, North York');
+INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('kevin_lee', 'kevinpass9', 'kevin_lee@example.com', 'Michael', 'Garcia', '9012345678', '321 Spruce St, Scarborough');
 INSERT INTO gpnr_customer (customer_username, customer_password, customer_email, customer_firstname, customer_lastname, customer_phone, customer_address) VALUES ('emily_taylor', 'emilypass', 'emily_taylor@example.com', 'Jessica', 'Lopez', '0123456789', '789 Oak St, East York');
 
 CREATE TABLE gpnr_request (
@@ -360,11 +360,11 @@ CREATE TABLE gpnr_shipment (
     total NUMBER(12, 2),
     shipper_username VARCHAR2(20),
     promotion_id NUMBER(10),
-    province_id NUMBER(10),
+    district_id NUMBER(10),
     payment_method_id NUMBER(10),
     FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
     FOREIGN KEY (shipper_username) REFERENCES gpnr_shipper(shipper_username),
     FOREIGN KEY (promotion_id) REFERENCES gpnr_promotion(promotion_id),
-    FOREIGN KEY (province_id) REFERENCES gpnr_province(province_id),
+    FOREIGN KEY (district_id) REFERENCES gpnr_district(district_id),
     FOREIGN KEY (payment_method_id) REFERENCES gpnr_payment_method(payment_method_id)
 );
