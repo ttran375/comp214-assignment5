@@ -167,4 +167,13 @@ INSERT INTO gpnr_category (category_id, category_name, category_description) VAL
 INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (9, 'Outerwear', 'Stylish outerwear options to keep you warm and fashionable in any weather.');
 INSERT INTO gpnr_category (category_id, category_name, category_description) VALUES (10, 'Loungewear', 'Comfortable and trendy loungewear perfect for relaxing at home or running errands.');
 
-
+CREATE TABLE gpnr_product (
+    product_id NUMBER(10) PRIMARY KEY,
+    product_name VARCHAR2(255),
+    price NUMBER(12, 2),
+    product_quantity NUMBER(10),
+    category_id NUMBER(10),
+    product_attribute_id NUMBER(10),
+    FOREIGN KEY (category_id) REFERENCES gpnr_category(category_id),
+    FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
+);
