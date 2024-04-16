@@ -263,6 +263,13 @@ INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vinta
 
 ---------------------------------------------------------------------------------------------------------------
 
+CREATE TABLE gpnr_province (
+    province_id NUMBER(10) PRIMARY KEY,
+    province NUMBER(10),
+    tax NUMBER(3, 2),
+    shipping_cost NUMBER(3, 2)
+);
+
 CREATE TABLE gpnr_customer (
     customer_username VARCHAR2(20) PRIMARY KEY,
     customer_password VARCHAR2(255),
@@ -350,6 +357,14 @@ VALUES (3, 103, 2);
 INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
 VALUES (14, 103, 2);
 
+CREATE TABLE gpnr_promotion (
+    promotion_id NUMBER(10) PRIMARY KEY,
+    promotion_name VARCHAR2(255),
+    start_date DATE,
+    end_date DATE,
+    promotion_discount NUMBER(3, 2)
+);
+
 CREATE TABLE gpnr_cart (
     cart_id NUMBER(10) PRIMARY KEY,
     cart_created_at TIMESTAMP,
@@ -365,21 +380,6 @@ CREATE TABLE gpnr_cart_product (
     PRIMARY KEY (cart_id, product_id),
     FOREIGN KEY (cart_id) REFERENCES gpnr_cart(cart_id),
     FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
-);
-
-CREATE TABLE gpnr_promotion (
-    promotion_id NUMBER(10) PRIMARY KEY,
-    promotion_name VARCHAR2(255),
-    start_date DATE,
-    end_date DATE,
-    promotion_discount NUMBER(3, 2)
-);
-
-CREATE TABLE gpnr_province (
-    province_id NUMBER(10) PRIMARY KEY,
-    province NUMBER(10),
-    tax NUMBER(3, 2),
-    shipping_cost NUMBER(3, 2)
 );
 
 CREATE TABLE gpnr_payment_method (
