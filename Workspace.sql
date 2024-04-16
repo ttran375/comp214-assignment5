@@ -263,12 +263,22 @@ INSERT INTO gpnr_supplier_product (supplier_username, product_id) VALUES ('vinta
 
 ---------------------------------------------------------------------------------------------------------------
 
-CREATE TABLE gpnr_province (
-    province_id NUMBER(10) PRIMARY KEY,
-    province NUMBER(10),
+CREATE TABLE gpnr_district (
+    district_id NUMBER(10) PRIMARY KEY,
+    district NUMBER(10),
     tax NUMBER(3, 2),
     shipping_cost NUMBER(3, 2)
 );
+
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (1, 'Toronto Central', 0.15, 0.10);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (2, 'North York', 0.12, 0.05);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (3, 'Scarborough', 0.18, 0.08);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (4, 'Etobicoke', 0.10, 0.07);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (5, 'East York', 0.17, 0.06);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (6, 'York', 0.20, 0.09);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (7, 'Mississauga', 0.13, 0.11);
+INSERT INTO gpnr_district (district_id, district, tax, shipping_cost) VALUES (8, 'Toronto West', 0.16, 0.12);
+
 
 CREATE TABLE gpnr_customer (
     customer_username VARCHAR2(20) PRIMARY KEY,
@@ -329,33 +339,6 @@ CREATE TABLE gpnr_product_request (
     FOREIGN KEY (request_id) REFERENCES gpnr_request(request_id),
     FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
-
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
-VALUES (101, SYSTIMESTAMP, 'Pending', 0, 'Please process this order as soon as possible.', 'john_doe');
-
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
-VALUES (102, SYSTIMESTAMP, 'Pending', 0, 'I need these items urgently.', 'jane_smith');
-
-INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username)
-VALUES (103, SYSTIMESTAMP, 'Pending', 0, 'Can you expedite the delivery?', 'mike_jones');
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (1, 101, 2);
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (5, 101, 1);
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (1, 102, 1);
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (12, 102, 3);
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (3, 103, 2);
-
-INSERT INTO gpnr_product_request (product_id, request_id, product_request_quantity)
-VALUES (14, 103, 2);
 
 CREATE TABLE gpnr_promotion (
     promotion_id NUMBER(10) PRIMARY KEY,
