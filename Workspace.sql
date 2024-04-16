@@ -450,7 +450,6 @@ INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUE
 INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1003, 16, 3);
 
 INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1004, 6, 2);
-INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1004, 12, 1);
 
 INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1005, 4, 3);
 INSERT INTO gpnr_cart_product (cart_id, product_id, cart_product_quantity) VALUES (1005, 20, 2);
