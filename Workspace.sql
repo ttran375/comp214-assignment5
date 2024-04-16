@@ -366,6 +366,42 @@ CREATE TABLE gpnr_promotion (
     promotion_discount NUMBER(3, 2)
 );
 
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (1, 'Spring Sale', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'), 0.15);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (2, 'Summer Clearance', TO_DATE('2023-06-21', 'YYYY-MM-DD'), TO_DATE('2023-07-21', 'YYYY-MM-DD'), 0.2);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (3, 'Back to School', TO_DATE('2023-08-15', 'YYYY-MM-DD'), TO_DATE('2023-09-15', 'YYYY-MM-DD'), 0.1);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (4, 'Fall Fashion Event', TO_DATE('2023-09-22', 'YYYY-MM-DD'), TO_DATE('2023-10-22', 'YYYY-MM-DD'), 0.25);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (5, 'Black Friday', TO_DATE('2023-11-24', 'YYYY-MM-DD'), TO_DATE('2023-11-27', 'YYYY-MM-DD'), 0.3);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (6, 'Holiday Special', TO_DATE('2023-12-10', 'YYYY-MM-DD'), TO_DATE('2023-12-25', 'YYYY-MM-DD'), 0.2);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (7, 'New Year Clearance', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-15', 'YYYY-MM-DD'), 0.25);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (8, 'Valentine''s Day Sale', TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-14', 'YYYY-MM-DD'), 0.15);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (9, 'Spring Clearance', TO_DATE('2024-04-01', 'YYYY-MM-DD'), TO_DATE('2024-04-15', 'YYYY-MM-DD'), 0.3);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (10, 'Easter Special', TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-20', 'YYYY-MM-DD'), 0.2);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (11, 'Mother's Day Sale', TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-10', 'YYYY-MM-DD'), 0.25);
+
+INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
+VALUES (12, 'Memorial Day Weekend', TO_DATE('2024-05-25', 'YYYY-MM-DD'), TO_DATE('2024-05-28', 'YYYY-MM-DD'), 0.2);
+
 CREATE TABLE gpnr_cart (
     cart_id NUMBER(10) PRIMARY KEY,
     cart_created_at TIMESTAMP,
