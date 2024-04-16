@@ -313,7 +313,7 @@ CREATE TABLE gpnr_request (
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
-CREATE SEQUENCE seq_gpnr_product_id START WITH 100 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_product_id START WITH 101 INCREMENT BY 1;
 
 -- gpnr_request
 INSERT INTO gpnr_request (request_id, request_created_at, request_status, request_cost, message, customer_username) VALUES (seq_gpnr_product_id.NEXTVAL, TIMESTAMP '2023-06-16 10:00:00', 'Pending', 0.1, 'Please process this request as soon as possible.', 'jane_doe');
