@@ -209,3 +209,11 @@ INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, cat
 INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (28, 'White Lace Gloves', 19.99, 70, 5, 6);
 INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (29, 'Gray Bow Tie', 14.99, 100, 5, 7);
 INSERT INTO gpnr_product (product_id, product_name, price, product_quantity, category_id, product_attribute_id) VALUES (30, 'Small Red Suspenders', 24.99, 80, 5, 1);
+
+CREATE TABLE gpnr_supplier_product (
+    supplier_username VARCHAR2(20),
+    product_id NUMBER(10),
+    PRIMARY KEY (supplier_username, product_id),
+    FOREIGN KEY (supplier_username) REFERENCES gpnr_supplier(supplier_username),
+    FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
+);
