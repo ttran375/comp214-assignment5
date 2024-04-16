@@ -364,6 +364,7 @@ CREATE TABLE gpnr_promotion (
     promotion_discount NUMBER(3, 2)
 );
 
+-- gpnr_promotion
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
 VALUES (1, 'Spring Sale', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'), 0.15);
 
@@ -407,6 +408,22 @@ CREATE TABLE gpnr_cart (
     customer_username VARCHAR2(20),
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
+
+-- gpnr_cart
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (1, TIMESTAMP '2023-05-10 08:00:00', 'active', 'jane_doe');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (2, TIMESTAMP '2023-06-15 08:15:00', 'active', 'john_smith');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (3, TIMESTAMP '2023-07-20 08:30:00', 'active', 'mike_jones');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (4, TIMESTAMP '2023-08-25 08:45:00', 'active', 'amy_wong');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (5, TIMESTAMP '2023-09-30 09:00:00', 'active', 'brian_smith');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (6, TIMESTAMP '2023-10-05 09:15:00', 'active', 'sarah_brown');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (7, TIMESTAMP '2023-11-10 09:30:00', 'active', 'david_kim');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (8, TIMESTAMP '2023-12-15 09:45:00', 'active', 'lisa_miller');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (9, TIMESTAMP '2024-01-20 10:00:00', 'active', 'kevin_lee');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (10, TIMESTAMP '2024-02-25 10:15:00', 'active', 'emily_taylor');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (11, TIMESTAMP '2024-03-30 10:30:00', 'active', 'jane_doe');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (12, TIMESTAMP '2024-04-05 10:45:00', 'active', 'john_smith');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (13, TIMESTAMP '2024-04-10 11:00:00', 'active', 'mike_jones');
+INSERT INTO gpnr_cart (cart_id, cart_created_at, cart_status, customer_username) VALUES (14, TIMESTAMP '2024-04-15 11:15:00', 'active', 'amy_wong');
 
 CREATE TABLE gpnr_cart_product (
     cart_id NUMBER(10),
