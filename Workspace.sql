@@ -500,6 +500,7 @@ CREATE TABLE gpnr_payment_method (
     payment_method_discount NUMBER(3, 2)
 );
 
+-- gpnr_payment_method
 INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (1, 'Credit Card', 0.02);
 INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (2, 'Debit Card', 0.01);
 INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (3, 'Bank Transfer', 0.03);
