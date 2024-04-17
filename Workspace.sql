@@ -529,3 +529,62 @@ CREATE TABLE gpnr_shipment (
     FOREIGN KEY (district_id) REFERENCES gpnr_district(district_id),
     FOREIGN KEY (payment_method_id) REFERENCES gpnr_payment_method(payment_method_id)
 );
+
+CREATE OR REPLACE PROCEDURE calculate_and_insert_shipments AS
+BEGIN
+    FOR cart_rec IN (SELECT * FROM gpnr_cart WHERE cart_status = 'active') LOOP
+        DECLARE
+            v_shipping_date DATE;
+            v_shipping_address VARCHAR2(255);
+            v_shipping_status VARCHAR2(255);
+            v_total NUMBER(12, 2);
+            v_shipper_username VARCHAR2(20);
+            v_promotion_id NUMBER(10);
+            v_district_id NUMBER(10);
+            v_payment_method_id NUMBER(10);
+        BEGIN
+            -- Calculate shipping date (use current date)
+            v_shipping_date := SYSDATE;
+
+            -- Fetch shipping address, shipping status, shipper_username, and payment_method_id from cart
+            SELECT shipping_address, 'pending', shipper_username, payment_method_id
+            INTO v_shipping_address, v_shipping_status, v_shipper_username, v_payment_method_id
+            FROM gpnr_cart
+            WHERE cart_id = cart_rec.cart_id;
+
+            -- Calculate total
+            SELECT SUM(p.price * ci.quantity) * (1 - COALESCE(pr.promotion_discount, 0)) * (1 - pm.payment_method_discount)
+            INTO v_total
+            FROM gpnr_cart_item ci
+            JOIN gpnr_product p ON ci.product_id = p.product_id
+            LEFT JOIN gpnr_promotion pr ON ci.promotion_id = pr.promotion_id
+            JOIN gpnr_payment_method pm ON v_payment_method_id = pm.payment_method_id
+            WHERE ci.cart_id = cart_rec.cart_id;
+
+            -- Fetch district_id based on shipping address
+            SELECT district_id INTO v_district_id
+            FROM gpnr_district
+            WHERE district = (SELECT district FROM gpnr_address WHERE address = v_shipping_address);
+
+            -- Insert data into gpnr_shipment
+            INSERT INTO gpnr_shipment (cart_id, shipping_date, shipping_address, shipping_status, total, shipper_username, promotion_id, district_id, payment_method_id)
+            VALUES (cart_rec.cart_id, v_shipping_date, v_shipping_address, v_shipping_status, v_total, v_shipper_username, v_promotion_id, v_district_id, v_payment_method_id);
+
+            -- Update cart status
+            UPDATE gpnr_cart
+            SET cart_status = 'shipped'
+            WHERE cart_id = cart_rec.cart_id;
+
+            -- Commit the transaction
+            COMMIT;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                -- Handle if no data found
+                DBMS_OUTPUT.PUT_LINE('Error: No data found for cart ' || cart_rec.cart_id);
+            WHEN OTHERS THEN
+                -- Handle other exceptions
+                DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+        END;
+    END LOOP;
+END;
+/
