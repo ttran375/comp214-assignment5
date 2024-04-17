@@ -369,7 +369,7 @@ INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, 
 VALUES (1, 'Spring Sale', TO_DATE('2023-03-20', 'YYYY-MM-DD'), TO_DATE('2023-04-20', 'YYYY-MM-DD'), 0.15);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
-VALUES (2, 'Summer Clearance', TO_DATE('2023-06-21', 'YYYY-MM-DD'), TO_DATE('2023-07-21', 'YYYY-MM-DD'), 0.2);
+VALUES (2, 'Summer Clearance', TO_DATE('2023-05-01', 'YYYY-MM-DD'),, TO_DATE('2023-07-21', 'YYYY-MM-DD'), 0.2);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
 VALUES (3, 'Back to School', TO_DATE('2023-08-15', 'YYYY-MM-DD'), TO_DATE('2023-09-15', 'YYYY-MM-DD'), 0.1);
@@ -393,7 +393,7 @@ INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, 
 VALUES (9, 'Spring Clearance', TO_DATE('2024-04-01', 'YYYY-MM-DD'), TO_DATE('2024-04-15', 'YYYY-MM-DD'), 0.3);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
-VALUES (10, 'Easter Special', TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-20', 'YYYY-MM-DD'), 0.2);
+VALUES (10, 'Easter Special', TO_DATE('2024-04-16', 'YYYY-MM-DD'), TO_DATE('2024-04-20', 'YYYY-MM-DD'), 0.2);
 
 INSERT INTO gpnr_promotion (promotion_id, promotion_name, start_date, end_date, promotion_discount) 
 VALUES (11, 'Mother''s Day Sale', TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-10', 'YYYY-MM-DD'), 0.25);

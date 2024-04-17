@@ -47,7 +47,6 @@ CREATE TABLE gpnr_shipper (
     shipper_phone VARCHAR2(15)
 );
 
--- gpnr_shipper
 INSERT INTO gpnr_shipper (
     shipper_username,
     shipper_email,
@@ -197,7 +196,6 @@ CREATE TABLE gpnr_supplier (
     supplier_phone VARCHAR2(15)
 );
 
--- gpnr_supplier
 INSERT INTO gpnr_supplier (
     supplier_username,
     supplier_password,
@@ -364,7 +362,6 @@ CREATE TABLE gpnr_product_attribute (
     value VARCHAR2(255)
 );
 
--- gpnr_product_attribute
 INSERT INTO gpnr_product_attribute (
     product_attribute_id,
     product_attribute_name,
@@ -521,7 +518,6 @@ CREATE TABLE gpnr_category (
     category_description CLOB
 );
 
--- gpnr_category
 INSERT INTO gpnr_category (
     category_id,
     category_name,
@@ -633,486 +629,93 @@ CREATE TABLE gpnr_product (
     FOREIGN KEY (product_attribute_id) REFERENCES gpnr_product_attribute(product_attribute_id)
 );
 
--- gpnr_product
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    1,
-    'Red T-Shirt',
-    19.99,
-    100,
-    1,
-    1
-);
+CREATE OR REPLACE PROCEDURE add_new_product (
+    p_product_id IN NUMBER,
+    p_product_name IN VARCHAR2,
+    p_price IN NUMBER,
+    p_quantity IN NUMBER,
+    p_category_id IN NUMBER,
+    p_attribute_id IN NUMBER
+) AS
+    l_category_count  NUMBER;
+    l_attribute_count NUMBER;
+BEGIN
+    SELECT
+        COUNT(*) INTO l_category_count
+    FROM
+        gpnr_category
+    WHERE
+        category_id = p_category_id;
+    IF l_category_count = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Category ID does not exist.');
+    END IF;
 
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    2,
-    'Navy Blue Jeans',
-    29.99,
-    75,
-    1,
-    14
-);
+    SELECT
+        COUNT(*) INTO l_attribute_count
+    FROM
+        gpnr_product_attribute
+    WHERE
+        product_attribute_id = p_attribute_id;
+    IF l_attribute_count = 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Product Attribute ID does not exist.');
+    END IF;
 
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    3,
-    'Green Dress',
-    39.99,
-    50,
-    5,
-    6
-);
+    INSERT INTO gpnr_product (
+        product_id,
+        product_name,
+        price,
+        product_quantity,
+        category_id,
+        product_attribute_id
+    ) VALUES (
+        p_product_id,
+        p_product_name,
+        p_price,
+        p_quantity,
+        p_category_id,
+        p_attribute_id
+    );
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
 
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    4,
-    'Yellow Hoodie',
-    34.99,
-    80,
-    6,
-    1
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    5,
-    'Black Leggings',
-    24.99,
-    90,
-    1,
-    15
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    6,
-    'White Sneakers',
-    49.99,
-    60,
-    2,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    7,
-    'Gray Sweatpants',
-    29.99,
-    70,
-    6,
-    15
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    8,
-    'Small Red Backpack',
-    39.99,
-    40,
-    3,
-    1
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    9,
-    'Large Navy Blue Socks',
-    7.29,
-    30,
-    9,
-    3
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    10,
-    'Large Green Scarf',
-    19.99,
-    50,
-    3,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    11,
-    'Black Swimsuit',
-    29.99,
-    45,
-    8,
-    15
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    12,
-    'White Sunglasses',
-    14.99,
-    100,
-    3,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    13,
-    'Gray Hat',
-    9.99,
-    120,
-    3,
-    7
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    14,
-    'Small Black Gym Bag',
-    24.99,
-    80,
-    4,
-    5
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    15,
-    'Medium Navy Blue Yoga Mat',
-    29.99,
-    60,
-    4,
-    2
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    16,
-    'Large Green Water Bottle',
-    19.99,
-    70,
-    4,
-    4
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    17,
-    'Red Soccer Jersey',
-    39.99,
-    40,
-    4,
-    1
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    18,
-    'Navy Blue Basketball Shorts',
-    24.99,
-    50,
-    4,
-    14
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    19,
-    'Green Running Shoes',
-    59.99,
-    30,
-    4,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    20,
-    'Yellow Tennis Skirt',
-    34.99,
-    35,
-    4,
-    15
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    21,
-    'Black Baseball Cap',
-    19.99,
-    80,
-    3,
-    5
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    22,
-    'White Leather Belt',
-    29.99,
-    60,
-    3,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    23,
-    'Gray Wool Gloves',
-    14.99,
-    100,
-    3,
-    7
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    24,
-    'Small Red Handbag',
-    39.99,
-    40,
-    3,
-    1
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    25,
-    'Medium Navy Blue Necktie',
-    24.99,
-    50,
-    5,
-    14
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    26,
-    'Large Green Suit',
-    59.99,
-    30,
-    5,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    27,
-    'Black Dress Shoes',
-    49.99,
-    35,
-    2,
-    5
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    28,
-    'White Lace Gloves',
-    19.99,
-    70,
-    5,
-    6
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    29,
-    'Gray Bow Tie',
-    14.99,
-    100,
-    5,
-    7
-);
-
-INSERT INTO gpnr_product (
-    product_id,
-    product_name,
-    price,
-    product_quantity,
-    category_id,
-    product_attribute_id
-) VALUES (
-    30,
-    'Small Red Suspenders',
-    24.99,
-    80,
-    5,
-    1
-);
+BEGIN
+    add_new_product(1, 'Red T-Shirt', 19.99, 100, 1, 1);
+    add_new_product(2, 'Navy Blue Jeans', 29.99, 75, 1, 14);
+    add_new_product(3, 'Green Dress', 39.99, 50, 5, 6);
+    add_new_product(4, 'Yellow Hoodie', 34.99, 80, 6, 1);
+    add_new_product(5, 'Black Leggings', 24.99, 90, 1, 15);
+    add_new_product(6, 'White Sneakers', 49.99, 60, 2, 6);
+    add_new_product(7, 'Gray Sweatpants', 29.99, 70, 6, 15);
+    add_new_product(8, 'Small Red Backpack', 39.99, 40, 3, 1);
+    add_new_product(9, 'Large Navy Blue Socks', 7.29, 30, 9, 3);
+    add_new_product(10, 'Large Green Scarf', 19.99, 50, 3, 6);
+    add_new_product(11, 'Black Swimsuit', 29.99, 45, 8, 15);
+    add_new_product(12, 'White Sunglasses', 14.99, 100, 3, 6);
+    add_new_product(13, 'Gray Hat', 9.99, 120, 3, 7);
+    add_new_product(14, 'Small Black Gym Bag', 24.99, 80, 4, 5);
+    add_new_product(15, 'Medium Navy Blue Yoga Mat', 29.99, 60, 4, 2);
+    add_new_product(16, 'Large Green Water Bottle', 19.99, 70, 4, 4);
+    add_new_product(17, 'Red Soccer Jersey', 39.99, 40, 4, 1);
+    add_new_product(18, 'Navy Blue Basketball Shorts', 24.99, 50, 4, 14);
+    add_new_product(19, 'Green Running Shoes', 59.99, 30, 4, 6);
+    add_new_product(20, 'Yellow Tennis Skirt', 34.99, 35, 4, 15);
+    add_new_product(21, 'Black Baseball Cap', 19.99, 80, 3, 5);
+    add_new_product(22, 'White Leather Belt', 29.99, 60, 3, 6);
+    add_new_product(23, 'Gray Wool Gloves', 14.99, 100, 3, 7);
+    add_new_product(24, 'Small Red Handbag', 39.99, 40, 3, 1);
+    add_new_product(25, 'Medium Navy Blue Necktie', 24.99, 50, 5, 14);
+    add_new_product(26, 'Large Green Suit', 59.99, 30, 5, 6);
+    add_new_product(27, 'Black Dress Shoes', 49.99, 35, 2, 5);
+    add_new_product(28, 'White Lace Gloves', 19.99, 70, 5, 6);
+    add_new_product(29, 'Gray Bow Tie', 14.99, 100, 5, 7);
+    add_new_product(30, 'Small Red Suspenders', 24.99, 80, 5, 1);
+END;
+/
 
 CREATE TABLE gpnr_supplier_product (
     supplier_username VARCHAR2(20),
@@ -1122,7 +725,6 @@ CREATE TABLE gpnr_supplier_product (
     FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
 
--- gpnr_supplier_product
 INSERT INTO gpnr_supplier_product (
     supplier_username,
     product_id
@@ -1372,7 +974,6 @@ CREATE TABLE gpnr_district (
     shipping_cost NUMBER(3, 2)
 );
 
--- gpnr_district
 INSERT INTO gpnr_district (
     district_id,
     district,
@@ -1479,7 +1080,6 @@ CREATE TABLE gpnr_customer (
     customer_address VARCHAR2(255)
 );
 
--- gpnr_customer
 INSERT INTO gpnr_customer (
     customer_username,
     customer_password,
@@ -1660,6 +1260,23 @@ INSERT INTO gpnr_customer (
     '789 Oak St, East York'
 );
 
+CREATE OR REPLACE TRIGGER check_username_password BEFORE
+    INSERT OR UPDATE ON gpnr_customer FOR EACH ROW
+DECLARE
+    v_username_exists NUMBER;
+BEGIN
+    SELECT
+        COUNT(*) INTO v_username_exists
+    FROM
+        gpnr_customer
+    WHERE
+        customer_username = :NEW.customer_username;
+    IF v_username_exists > 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Username already exists');
+    END IF;
+END;
+/
+
 CREATE TABLE gpnr_request (
     request_id NUMBER(10) PRIMARY KEY,
     request_created_at TIMESTAMP,
@@ -1679,9 +1296,8 @@ CREATE TABLE gpnr_product_request (
     FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
 
--- CREATE SEQUENCE seq_gpnr_request_id START WITH 101 INCREMENT BY 1;
+CREATE SEQUENCE seq_gpnr_request_id START WITH 101 INCREMENT BY 1;
 
--- gpnr_request
 INSERT INTO gpnr_request (
     request_id,
     request_created_at,
@@ -1690,7 +1306,7 @@ INSERT INTO gpnr_request (
     message,
     customer_username
 ) VALUES (
-    101,
+    seq_gpnr_request_id.NEXTVAL,
     TIMESTAMP '2023-06-16 10:00:00',
     'Pending',
     0.1,
@@ -1698,158 +1314,13 @@ INSERT INTO gpnr_request (
     'jane_doe'
 );
 
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    102,
-    TIMESTAMP '2023-07-05 11:30:00',
-    'Approved',
-    0.2,
-    'Urgent request. Need immediate attention.',
-    'john_smith'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    103,
-    TIMESTAMP '2023-08-20 13:45:00',
-    'Pending',
-    0.3,
-    'This is a test message for the request.',
-    'mike_jones'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    104,
-    TIMESTAMP '2023-09-10 15:20:00',
-    'Rejected',
-    0.05,
-    'Request has been rejected due to insufficient funds.',
-    'amy_wong'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    105,
-    TIMESTAMP '2023-10-05 08:45:00',
-    'Approved',
-    0.1,
-    'Request approved. Processing will begin shortly.',
-    'brian_smith'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    106,
-    TIMESTAMP '2023-11-25 11:30:00',
-    'Pending',
-    0.15,
-    'Please expedite processing for this request.',
-    'sarah_brown'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    107,
-    TIMESTAMP '2023-12-10 14:15:00',
-    'Approved',
-    0.2,
-    'Request approved. Payment has been processed.',
-    'david_kim'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    108,
-    TIMESTAMP '2024-01-05 09:00:00',
-    'Pending',
-    0.25,
-    'Request is urgent. Please prioritize processing.',
-    'lisa_miller'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    109,
-    TIMESTAMP '2024-02-15 13:30:00',
-    'Rejected',
-    0.3,
-    'Request rejected due to incomplete information.',
-    'kevin_lee'
-);
-
-INSERT INTO gpnr_request (
-    request_id,
-    request_created_at,
-    request_status,
-    request_cost,
-    message,
-    customer_username
-) VALUES (
-    110,
-    TIMESTAMP '2024-03-20 17:45:00',
-    'Pending',
-    0.05,
-    'Please process this request at the earliest convenience.',
-    'emily_taylor'
-);
-
--- gpnr_product_request
 INSERT INTO gpnr_product_request (
     product_id,
     request_id,
     product_request_quantity
 ) VALUES (
     7,
-    101,
+    seq_gpnr_request_id.CURRVAL,
     5
 );
 
@@ -1859,8 +1330,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     8,
-    101,
+    seq_gpnr_request_id.CURRVAL,
     3
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-07-05 11:30:00',
+    'Approved',
+    0.2,
+    'Urgent request. Need immediate attention.',
+    'john_smith'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1869,7 +1356,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     7,
-    102,
+    seq_gpnr_request_id.CURRVAL,
     2
 );
 
@@ -1879,8 +1366,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     6,
-    102,
+    seq_gpnr_request_id.CURRVAL,
     4
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-08-20 13:45:00',
+    'Pending',
+    0.3,
+    'This is a test message for the request.',
+    'mike_jones'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1889,8 +1392,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     20,
-    103,
+    seq_gpnr_request_id.CURRVAL,
     7
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-09-10 15:20:00',
+    'Rejected',
+    0.05,
+    'Request has been rejected due to insufficient funds.',
+    'amy_wong'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1899,8 +1418,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     7,
-    104,
+    seq_gpnr_request_id.CURRVAL,
     6
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-10-05 08:45:00',
+    'Approved',
+    0.1,
+    'Request approved. Processing will begin shortly.',
+    'brian_smith'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1909,7 +1444,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     12,
-    105,
+    seq_gpnr_request_id.CURRVAL,
     2
 );
 
@@ -1919,8 +1454,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     17,
-    105,
+    seq_gpnr_request_id.CURRVAL,
     3
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-11-25 11:30:00',
+    'Pending',
+    0.15,
+    'Please expedite processing for this request.',
+    'sarah_brown'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1929,7 +1480,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     5,
-    106,
+    seq_gpnr_request_id.CURRVAL,
     4
 );
 
@@ -1939,8 +1490,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     18,
-    106,
+    seq_gpnr_request_id.CURRVAL,
     5
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2023-12-10 14:15:00',
+    'Approved',
+    0.2,
+    'Request approved. Payment has been processed.',
+    'david_kim'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1949,7 +1516,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     21,
-    107,
+    seq_gpnr_request_id.CURRVAL,
     3
 );
 
@@ -1959,8 +1526,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     11,
-    107,
+    seq_gpnr_request_id.CURRVAL,
     4
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2024-01-05 09:00:00',
+    'Pending',
+    0.25,
+    'Request is urgent. Please prioritize processing.',
+    'lisa_miller'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1969,7 +1552,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     4,
-    108,
+    seq_gpnr_request_id.CURRVAL,
     6
 );
 
@@ -1979,8 +1562,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     9,
-    108,
+    seq_gpnr_request_id.CURRVAL,
     3
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2024-02-15 13:30:00',
+    'Rejected',
+    0.3,
+    'Request rejected due to incomplete information.',
+    'kevin_lee'
 );
 
 INSERT INTO gpnr_product_request (
@@ -1989,7 +1588,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     10,
-    109,
+    seq_gpnr_request_id.CURRVAL,
     5
 );
 
@@ -1999,8 +1598,24 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     2,
-    109,
+    seq_gpnr_request_id.CURRVAL,
     7
+);
+
+INSERT INTO gpnr_request (
+    request_id,
+    request_created_at,
+    request_status,
+    request_cost,
+    message,
+    customer_username
+) VALUES (
+    seq_gpnr_request_id.NEXTVAL,
+    TIMESTAMP '2024-03-20 17:45:00',
+    'Pending',
+    0.05,
+    'Please process this request at the earliest convenience.',
+    'emily_taylor'
 );
 
 INSERT INTO gpnr_product_request (
@@ -2009,7 +1624,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     23,
-    110,
+    seq_gpnr_request_id.CURRVAL,
     2
 );
 
@@ -2019,7 +1634,7 @@ INSERT INTO gpnr_product_request (
     product_request_quantity
 ) VALUES (
     13,
-    110,
+    seq_gpnr_request_id.CURRVAL,
     3
 );
 
@@ -2031,7 +1646,6 @@ CREATE TABLE gpnr_promotion (
     promotion_discount NUMBER(3, 2)
 );
 
--- gpnr_promotion
 INSERT INTO gpnr_promotion (
     promotion_id,
     promotion_name,
@@ -2055,7 +1669,7 @@ INSERT INTO gpnr_promotion (
 ) VALUES (
     2,
     'Summer Clearance',
-    TO_DATE('2023-06-21', 'YYYY-MM-DD'),
+    TO_DATE('2023-05-01', 'YYYY-MM-DD'),
     TO_DATE('2023-07-21', 'YYYY-MM-DD'),
     0.2
 );
@@ -2167,7 +1781,7 @@ INSERT INTO gpnr_promotion (
 ) VALUES (
     10,
     'Easter Special',
-    TO_DATE('2024-04-10', 'YYYY-MM-DD'),
+    TO_DATE('2024-04-16', 'YYYY-MM-DD'),
     TO_DATE('2024-04-20', 'YYYY-MM-DD'),
     0.2
 );
@@ -2203,12 +1817,12 @@ INSERT INTO gpnr_promotion (
 CREATE TABLE gpnr_cart (
     cart_id NUMBER(10) PRIMARY KEY,
     cart_created_at TIMESTAMP,
-    cart_status VARCHAR2(255),
+    cart_status VARCHAR2(255) DEFAULT 'pending',
     customer_username VARCHAR2(20),
     FOREIGN KEY (customer_username) REFERENCES gpnr_customer(customer_username)
 );
 
-CREATE TABLE gpnr_cart_product (
+CREATE TABLE gpnr_product_cart (
     cart_id NUMBER(10),
     product_id NUMBER(10),
     cart_product_quantity NUMBER(10),
@@ -2217,625 +1831,688 @@ CREATE TABLE gpnr_cart_product (
     FOREIGN KEY (product_id) REFERENCES gpnr_product(product_id)
 );
 
--- gpnr_cart
+CREATE SEQUENCE seq_gpnr_cart_id START WITH 1001 INCREMENT BY 1;
+
 INSERT INTO gpnr_cart (
     cart_id,
     cart_created_at,
     cart_status,
     customer_username
 ) VALUES (
-    1001,
+    seq_gpnr_cart_id.NEXTVAL,
     TIMESTAMP '2023-05-10 08:00:00',
-    'active',
+    'checked out',
     'jane_doe'
 );
 
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1002,
-    TIMESTAMP '2023-06-15 08:15:00',
-    'active',
-    'john_smith'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1003,
-    TIMESTAMP '2023-07-20 08:30:00',
-    'active',
-    'mike_jones'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1004,
-    TIMESTAMP '2023-08-25 08:45:00',
-    'active',
-    'amy_wong'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1005,
-    TIMESTAMP '2023-09-30 09:00:00',
-    'active',
-    'brian_smith'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1006,
-    TIMESTAMP '2023-10-05 09:15:00',
-    'active',
-    'sarah_brown'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1007,
-    TIMESTAMP '2023-11-10 09:30:00',
-    'active',
-    'david_kim'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1008,
-    TIMESTAMP '2023-12-15 09:45:00',
-    'active',
-    'lisa_miller'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1009,
-    TIMESTAMP '2024-01-20 10:00:00',
-    'active',
-    'kevin_lee'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1010,
-    TIMESTAMP '2024-02-25 10:15:00',
-    'active',
-    'emily_taylor'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1011,
-    TIMESTAMP '2024-03-30 10:30:00',
-    'active',
-    'jane_doe'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1012,
-    TIMESTAMP '2024-04-05 10:45:00',
-    'active',
-    'john_smith'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1013,
-    TIMESTAMP '2024-04-10 11:00:00',
-    'active',
-    'mike_jones'
-);
-
-INSERT INTO gpnr_cart (
-    cart_id,
-    cart_created_at,
-    cart_status,
-    customer_username
-) VALUES (
-    1014,
-    TIMESTAMP '2024-04-15 11:15:00',
-    'active',
-    'amy_wong'
-);
-
--- gpnr_cart_product
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1001,
+    seq_gpnr_cart_id.CURRVAL,
     1,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1001,
+    seq_gpnr_cart_id.CURRVAL,
     5,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1001,
+    seq_gpnr_cart_id.CURRVAL,
     8,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-06-15 08:15:00',
+    'checked out',
+    'john_smith'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1002,
+    seq_gpnr_cart_id.CURRVAL,
     3,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1002,
+    seq_gpnr_cart_id.CURRVAL,
     7,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1002,
+    seq_gpnr_cart_id.CURRVAL,
     11,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1002,
+    seq_gpnr_cart_id.CURRVAL,
     19,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-07-20 08:30:00',
+    'checked out',
+    'mike_jones'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1003,
+    seq_gpnr_cart_id.CURRVAL,
     2,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1003,
+    seq_gpnr_cart_id.CURRVAL,
     10,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1003,
+    seq_gpnr_cart_id.CURRVAL,
     14,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1003,
+    seq_gpnr_cart_id.CURRVAL,
     16,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-08-25 08:45:00',
+    'checked out',
+    'amy_wong'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1004,
+    seq_gpnr_cart_id.CURRVAL,
     6,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-09-30 09:00:00',
+    'checked out',
+    'brian_smith'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1005,
+    seq_gpnr_cart_id.CURRVAL,
     4,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1005,
+    seq_gpnr_cart_id.CURRVAL,
     20,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1005,
+    seq_gpnr_cart_id.CURRVAL,
     23,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-10-05 09:15:00',
+    'checked out',
+    'sarah_brown'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1006,
+    seq_gpnr_cart_id.CURRVAL,
     15,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1006,
+    seq_gpnr_cart_id.CURRVAL,
     21,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1006,
+    seq_gpnr_cart_id.CURRVAL,
     22,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-11-10 09:30:00',
+    'checked out',
+    'david_kim'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1007,
+    seq_gpnr_cart_id.CURRVAL,
     13,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1007,
+    seq_gpnr_cart_id.CURRVAL,
     18,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1007,
+    seq_gpnr_cart_id.CURRVAL,
     25,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1007,
+    seq_gpnr_cart_id.CURRVAL,
     27,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2023-12-15 09:45:00',
+    'checked out',
+    'lisa_miller'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1008,
+    seq_gpnr_cart_id.CURRVAL,
     24,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1008,
+    seq_gpnr_cart_id.CURRVAL,
     26,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1008,
+    seq_gpnr_cart_id.CURRVAL,
     28,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1008,
+    seq_gpnr_cart_id.CURRVAL,
     29,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-01-20 10:00:00',
+    'checked out',
+    'kevin_lee'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1009,
+    seq_gpnr_cart_id.CURRVAL,
     9,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1009,
+    seq_gpnr_cart_id.CURRVAL,
     17,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1009,
+    seq_gpnr_cart_id.CURRVAL,
     30,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-02-25 10:15:00',
+    'checked out',
+    'emily_taylor'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1010,
+    seq_gpnr_cart_id.CURRVAL,
     2,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1010,
+    seq_gpnr_cart_id.CURRVAL,
     7,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1010,
+    seq_gpnr_cart_id.CURRVAL,
     13,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1010,
+    seq_gpnr_cart_id.CURRVAL,
     20,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-03-30 10:30:00',
+    'checked out',
+    'jane_doe'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1011,
+    seq_gpnr_cart_id.CURRVAL,
     3,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1011,
+    seq_gpnr_cart_id.CURRVAL,
     11,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-04-05 10:45:00',
+    'checked out',
+    'john_smith'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1012,
+    seq_gpnr_cart_id.CURRVAL,
     5,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1012,
+    seq_gpnr_cart_id.CURRVAL,
     16,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1012,
+    seq_gpnr_cart_id.CURRVAL,
     23,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-04-10 11:00:00',
+    'pending',
+    'mike_jones'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1013,
+    seq_gpnr_cart_id.CURRVAL,
     4,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1013,
+    seq_gpnr_cart_id.CURRVAL,
     9,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1013,
+    seq_gpnr_cart_id.CURRVAL,
     18,
     2
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1013,
+    seq_gpnr_cart_id.CURRVAL,
     24,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_cart (
+    cart_id,
+    cart_created_at,
+    cart_status,
+    customer_username
+) VALUES (
+    seq_gpnr_cart_id.NEXTVAL,
+    TIMESTAMP '2024-04-15 11:15:00',
+    'pending',
+    'amy_wong'
+);
+
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1014,
+    seq_gpnr_cart_id.CURRVAL,
     6,
     3
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1014,
+    seq_gpnr_cart_id.CURRVAL,
     12,
     1
 );
 
-INSERT INTO gpnr_cart_product (
+INSERT INTO gpnr_product_cart (
     cart_id,
     product_id,
     cart_product_quantity
 ) VALUES (
-    1014,
+    seq_gpnr_cart_id.CURRVAL,
     21,
     2
 );
+
+CREATE OR REPLACE PROCEDURE process_product_cart (
+    p_cart_id IN NUMBER
+) AS
+    l_cart_count NUMBER;
+BEGIN
+    SELECT
+        COUNT(*) INTO l_cart_count
+    FROM
+        gpnr_cart
+    WHERE
+        cart_id = p_cart_id;
+    IF l_cart_count = 0 THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Cart ID does not exist.');
+    END IF;
+    UPDATE gpnr_cart
+    SET
+        cart_status = 'checked out'
+    WHERE
+        cart_id = p_cart_id;
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
+
+BEGIN
+    process_product_cart(
+        p_cart_id => 1013
+    );
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_product_stock AFTER
+    INSERT ON gpnr_product_cart FOR EACH ROW
+DECLARE
+    v_quantity NUMBER;
+BEGIN
+    SELECT
+        product_quantity INTO v_quantity
+    FROM
+        gpnr_product
+    WHERE
+        product_id = :NEW.product_id;
+    IF v_quantity < :NEW.cart_product_quantity THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Insufficient stock for product ID '
+                                        || TO_CHAR(:NEW.product_id));
+    ELSE
+        UPDATE gpnr_product
+        SET
+            product_quantity = v_quantity - :NEW.cart_product_quantity
+        WHERE
+            product_id = :NEW.product_id;
+    END IF;
+END;
+/
 
 CREATE TABLE gpnr_payment_method (
     payment_method_id NUMBER(10) PRIMARY KEY,
@@ -2843,7 +2520,6 @@ CREATE TABLE gpnr_payment_method (
     payment_method_discount NUMBER(3, 2)
 );
 
--- gpnr_payment_method
 INSERT INTO gpnr_payment_method (
     payment_method_id,
     payment_name,
@@ -2969,120 +2645,117 @@ CREATE TABLE gpnr_shipment (
     FOREIGN KEY (payment_method_id) REFERENCES gpnr_payment_method(payment_method_id)
 );
 
+CREATE OR REPLACE FUNCTION get_customer_district(
+    p_username IN VARCHAR2
+) RETURN VARCHAR2 IS
+    v_district VARCHAR2(100);
+BEGIN
+    SELECT
+        d.district INTO v_district
+    FROM
+        gpnr_customer c
+        JOIN gpnr_district d
+        ON SUBSTR(c.customer_address,
+        INSTR(c.customer_address,
+        ',',
+        1,
+        1) + 2) = d.district
+    WHERE
+        c.customer_username = p_username;
+    RETURN v_district;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+END;
+/
+
 DECLARE
-    lv_cart_id            gpnr_cart.cart_id%TYPE;
-    lv_shipping_date      gpnr_shipment.shipping_date%TYPE;
-    lv_total              gpnr_shipment.total%TYPE;
+    lv_shipping_date      DATE;
+    lv_customer_district  gpnr_district.district%TYPE;
+    lv_cart_created_date  DATE;
     lv_shipper_username   gpnr_shipment.shipper_username%TYPE;
-    lv_promotion_id       gpnr_shipment.promotion_id%TYPE;
     lv_district_id        gpnr_shipment.district_id%TYPE;
-    lv_payment_method_id  gpnr_shipment.payment_method_id%TYPE;
     lv_district_tax       gpnr_district.tax%TYPE;
     lv_shipping_cost      gpnr_district.shipping_cost%TYPE;
     lv_payment_discount   gpnr_payment_method.payment_method_discount%TYPE;
     lv_cart_total         NUMBER(12, 2);
     lv_promotion_discount NUMBER(12, 2);
+    lv_total              gpnr_shipment.total%TYPE;
+    lv_promotion_id       gpnr_shipment.promotion_id%TYPE;
+    lv_payment_method_id  gpnr_shipment.payment_method_id%TYPE;
 BEGIN
     FOR cart_rec IN (
         SELECT
-            cart_id
+            c.cart_id,
+            c.customer_username,
+            c.cart_created_at
         FROM
-            gpnr_cart
+            gpnr_cart c
         WHERE
-            cart_status = 'active'
+            c.cart_status = 'checked out'
     ) LOOP
- -- Calculate total for the cart
+        lv_customer_district := get_customer_district(cart_rec.customer_username);
+        lv_cart_created_date := cart_rec.cart_created_at;
         lv_cart_total := 0;
         FOR cart_prod_rec IN (
             SELECT
-                product_id,
-                cart_product_quantity
+                pc.product_id,
+                pc.cart_product_quantity
             FROM
-                gpnr_cart_product
+                gpnr_product_cart pc
             WHERE
-                cart_id = cart_rec.cart_id
+                pc.cart_id = cart_rec.cart_id
         ) LOOP
             SELECT
-                price * cart_prod_rec.cart_product_quantity INTO lv_cart_total
+                p.price * cart_prod_rec.cart_product_quantity INTO lv_cart_total
             FROM
-                gpnr_product
+                gpnr_product p
             WHERE
-                product_id = cart_prod_rec.product_id;
+                p.product_id = cart_prod_rec.product_id;
         END LOOP;
- -- Choose random shipper username
+
         SELECT
             shipper_username INTO lv_shipper_username
         FROM
-            (
-                SELECT
-                    shipper_username
-                FROM
-                    gpnr_shipper
-                ORDER BY
-                    DBMS_RANDOM.VALUE
-            )
-        WHERE
-            ROWNUM = 1;
- -- Fetch random promotion, district, and payment method
+            gpnr_shipper
+        ORDER BY
+            DBMS_RANDOM.VALUE FETCH FIRST 1 ROWS ONLY;
         SELECT
-            promotion_id INTO lv_promotion_id
-        FROM
-            (
-                SELECT
-                    promotion_id
-                FROM
-                    gpnr_promotion
-                ORDER BY
-                    DBMS_RANDOM.VALUE
-            )
-        WHERE
-            ROWNUM = 1;
-        SELECT
-            district_id,
-            tax,
-            shipping_cost INTO lv_district_id,
+            d.district_id,
+            d.tax,
+            d.shipping_cost INTO lv_district_id,
             lv_district_tax,
             lv_shipping_cost
         FROM
-            (
-                SELECT
-                    district_id,
-                    tax,
-                    shipping_cost
-                FROM
-                    gpnr_district
-                ORDER BY
-                    DBMS_RANDOM.VALUE
-            )
+            gpnr_district d
         WHERE
-            ROWNUM = 1;
+            d.district = lv_customer_district;
         SELECT
-            payment_method_id,
-            payment_method_discount INTO lv_payment_method_id,
+            pm.payment_method_id,
+            pm.payment_method_discount INTO lv_payment_method_id,
             lv_payment_discount
         FROM
-            (
-                SELECT
-                    payment_method_id,
-                    payment_method_discount
-                FROM
-                    gpnr_payment_method
-                ORDER BY
-                    DBMS_RANDOM.VALUE
-            )
-        WHERE
-            ROWNUM = 1;
- -- Calculate promotion discount
-        SELECT
-            promotion_discount INTO lv_promotion_discount
-        FROM
-            gpnr_promotion
-        WHERE
-            promotion_id = lv_promotion_id;
- -- Calculate total including taxes, shipping, and payment discount
+            gpnr_payment_method pm
+        ORDER BY
+            DBMS_RANDOM.VALUE FETCH FIRST 1 ROWS ONLY;
+        BEGIN
+            SELECT
+                promotion_id,
+                promotion_discount INTO lv_promotion_id,
+                lv_promotion_discount
+            FROM
+                gpnr_promotion
+            WHERE
+                start_date <= lv_cart_created_date
+                AND end_date >= lv_cart_created_date;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                lv_promotion_discount := 0;
+        END;
+
         lv_total := lv_cart_total * (1 - lv_promotion_discount) * (1 + lv_district_tax) + lv_shipping_cost;
         lv_total := lv_total * (1 - lv_payment_discount);
- -- Insert into gpnr_shipment table
+        lv_shipping_date := lv_cart_created_date + TRUNC(DBMS_RANDOM.VALUE(1, 7));
         INSERT INTO gpnr_shipment (
             cart_id,
             shipping_date,
@@ -3093,20 +2766,15 @@ BEGIN
             payment_method_id
         ) VALUES (
             cart_rec.cart_id,
-            SYSDATE,
+            lv_shipping_date,
             lv_total,
             lv_shipper_username,
             lv_promotion_id,
             lv_district_id,
             lv_payment_method_id
         );
- -- Commit after each cart
-        COMMIT;
     END LOOP;
+
+    COMMIT;
 END;
 /
-
-SELECT
-    *
-FROM
-    gpnr_shipment;
