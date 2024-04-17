@@ -500,6 +500,18 @@ CREATE TABLE gpnr_payment_method (
     payment_method_discount NUMBER(3, 2)
 );
 
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (1, 'Credit Card', 0.02);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (2, 'Debit Card', 0.01);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (3, 'Bank Transfer', 0.03);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (4, 'E-Wallet', 0.00);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (5, 'Cryptocurrency', 0.05);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (6, 'Buy Now, Pay Later', 0.00);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (7, 'Mobile Payment', 0.01);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (8, 'Gift Card', 0.00);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (9, 'Prepaid Card', 0.00);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (10, 'Cash on Delivery', 0.00);
+INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method_discount) VALUES (11, 'Check', 0.00);
+
 CREATE TABLE gpnr_shipment (
     cart_id NUMBER(10) PRIMARY KEY,
     shipping_date DATE,
