@@ -516,8 +516,6 @@ INSERT INTO gpnr_payment_method (payment_method_id, payment_name, payment_method
 CREATE TABLE gpnr_shipment (
     cart_id NUMBER(10) PRIMARY KEY,
     shipping_date DATE,
-    shipping_address VARCHAR2(255),
-    shipping_status VARCHAR2(255),
     total NUMBER(12, 2),
     shipper_username VARCHAR2(20),
     promotion_id NUMBER(10),
