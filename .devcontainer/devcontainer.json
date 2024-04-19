@@ -5,7 +5,6 @@
         "vscode": {
             "extensions": [
                 "GitHub.copilot",
-                "vsls-contrib.gitdoc",
                 "CrappyCodeMaker.ccm-plsql-oracle",
                 "EwanDubashinski.plsqllint",
                 "Oracle.oracledevtools",
